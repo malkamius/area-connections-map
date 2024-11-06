@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Interactive Game World Map</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            background-color: #f8fafc;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            gap: 20px;
+            max-width: 100vw;
+            width: 100%;
+        }
+
+        .map-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            flex: 1;
+            min-width: 0; /* Add this to allow proper flex shrinking */
+        }
+
+        .info-panel {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+            min-width: 300px;
+            display: none;
+        }
+        .card-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #1e293b;
+        }
+        .controls {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .control-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .control-group label {
+            white-space: nowrap;
+        }
+        .area-circle {
+            cursor: move;
+            transition: fill 0.2s;
+        }
+        .area-circle:hover {
+            fill: #cbd5e1;
+        }
+        .area-circle.selected {
+            fill: #bfdbfe;
+            stroke: #3b82f6;
+        }
+        .area-text {
+            pointer-events: none;
+            user-select: none;
+        }
+        #map-container {
+            overflow: auto;
+            max-height: 80vh;
+            width: 100%;
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+            position: relative;
+        }
+        #map {
+            min-width: 100%;
+            min-height: 100%;
+            width: max-content;
+            height: max-content;
+        }
+        .resize-handle {
+            cursor: nw-resize;
+            fill: #64748b;
+        }
+        .selection-rect {
+            fill: rgba(59, 130, 246, 0.1);
+            stroke: #3b82f6;
+            stroke-width: 1;
+            pointer-events: none;
+        }
+        .info-section {
+            margin-bottom: 20px;
+        }
+        .info-section h3 {
+            margin: 0 0 10px 0;
+            color: #1e293b;
+        }
+        .connection-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .connection-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .delete-btn {
+            background: #ef4444;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 4px 8px;
+            cursor: pointer;
+        }
+        .delete-btn:hover {
+            background: #dc2626;
+        }
+        button {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #2563eb;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="container">
+        <div class="map-card">
+            <div class="card-title">Interactive Game World Map</div>
+            <div class="controls">
+                <div class="control-group">
+                    <label>Load Map Data:</label>
+                    <input type="file" id="dataInput" accept=".json" />
+                </div>
+                <div class="control-group">
+                    <label>Load Layout:</label>
+                    <input type="file" id="layoutInput" accept=".json" />
+                </div>
+                <button onclick="saveLayout()">Save Layout</button>
+                <button onclick="addNewArea()">Add New Area</button>
+            </div>
+            <div id="map-container">
+                <svg id="map" viewBox="0 0 5000 5000" width="5000" height="5000">
+                    <defs>
+                        <marker 
+                            id="arrowhead" 
+                            markerWidth="10" 
+                            markerHeight="7" 
+                            refX="9" 
+                            refY="3.5" 
+                            orient="auto"
+                        >
+                            <polygon points="0 0, 10 3.5, 0 7" fill="#666" />
+                        </marker>
+                    </defs>
+                    <g id="connections"></g>
+                    <g id="areas"></g>
+                    <rect id="selection-rect" class="selection-rect" style="display: none"/>
+                </svg>
+            </div>
+        </div>
+        <div id="info-panel" class="info-panel">
+            <div class="card-title">Area Information</div>
+            <div class="info-section">
+                <h3>Name</h3>
+                <input type="text" id="area-name" style="width: 100%; padding: 4px;" />
+            </div>
+            <div class="info-section">
+                <h3>Connections</h3>
+                <ul id="connection-list" class="connection-list">
+                    <!-- Connections will be populated here -->
+                </ul>
+                <div style="margin-top: 10px;">
+                    <button onclick="showAddConnectionDialog()">Add Connection</button>
+                </div>
+            </div>
+            <div class="info-section">
+                <button class="delete-btn" onclick="deleteSelectedArea()">Delete Area</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        class Vector {
+            constructor(x, y) {
+                this.x = Number.isFinite(x) ? x : 0;
+                this.y = Number.isFinite(y) ? y : 0;
+            }
+
+            add(v) {
+                return new Vector(this.x + v.x, this.y + v.y);
+            }
+
+            subtract(v) {
+                return new Vector(this.x - v.x, this.y - v.y);
+            }
+
+            multiply(scalar) {
+                const s = Number.isFinite(scalar) ? scalar : 0;
+                return new Vector(this.x * s, this.y * s);
+            }
+
+            magnitude() {
+                return Math.sqrt(this.x * this.x + this.y * this.y);
+            }
+
+            normalize() {
+                const mag = this.magnitude();
+                return mag === 0 ? new Vector(0, 0) : new Vector(this.x / mag, this.y / mag);
+            }
+        }
+
+        // Add selection state to the global state
+        const state = {
+            areas: [],
+            connections: [],
+            dragging: null,
+            resizing: null,
+            offset: { x: 0, y: 0 },
+            initialSize: 0,
+            selection: {
+                active: false,
+                start: { x: 0, y: 0 },
+                current: { x: 0, y: 0 },
+                selectedAreas: new Set(),
+                selectedConnections: new Set()
+            },
+            draggingConnection: null,
+            connectionOffset: { x: 0, y: 0 },
+            panning: false,
+            panStart: { x: 0, y: 0 },
+            viewBox: { x: 0, y: 0, width: 5000, height: 5000 }
+        };
+        // Reset drag state
+        state.dragging = null;
+        state.resizing = null;
+        state.offset = { x: 0, y: 0 };
+        state.initialSize = 0;
+
+        // Re-attach event listeners
+        const svg = document.getElementById('map');
+        svg.addEventListener('mousemove', handleDrag);
+        svg.addEventListener('mouseup', endDrag);
+        svg.addEventListener('mouseleave', endDrag);
+        // Modified drag handling for group selection
+        function startDrag(e, areaIndex, isResize = false) {
+            const svg = document.getElementById('map');
+            const pt = svg.createSVGPoint();
+            pt.x = e.clientX;
+            pt.y = e.clientY;
+            const svgP = pt.matrixTransform(svg.getScreenCTM().inverse());
+
+            if (e.shiftKey) {
+                console.log("Setting selection state.");
+                // Selection rectangle handling remains the same
+                state.selection.active = true;
+                state.selection.start = { x: svgP.x, y: svgP.y };
+                state.selection.current = { x: svgP.x, y: svgP.y };
+                updateSelectionRect();
+            } else if (isResize) {
+                state.resizing = areaIndex;
+                state.initialPos = { x: state.areas[areaIndex].pos.x, y: state.areas[areaIndex].pos.y };
+                state.initialSize = state.areas[areaIndex].size;
+                state.dragStart = { x: svgP.x, y: svgP.y };
+            } else {
+                if (!state.selection.selectedAreas.has(areaIndex)) {
+                    // If clicking an unselected area without shift, clear selection
+                    state.selection.selectedAreas.clear();
+                    state.selection.selectedConnections.clear();
+                }
+                state.selection.selectedAreas.add(areaIndex);
+                state.dragging = true;
+                state.offset = {
+                    x: svgP.x - state.areas[areaIndex].pos.x,
+                    y: svgP.y - state.areas[areaIndex].pos.y
+                };
+                updateMap();
+            }
+        }
+
+        function handleDrag(e) {
+            const svg = document.getElementById('map');
+            const pt = svg.createSVGPoint();
+            const container = document.getElementById('map-container');
+            pt.x = e.clientX;
+            pt.y = e.clientY;
+            const svgP = pt.matrixTransform(svg.getScreenCTM().inverse());
+
+            if (state.panning) {
+                const dx = svgP.x - state.panStart.x;
+                const dy = svgP.y - state.panStart.y;
+                
+                // state.viewBox.x -= dx;
+                // state.viewBox.y -= dy;
+                
+                // // Keep viewBox within bounds
+                // state.viewBox.x = Math.max(0, Math.min(state.viewBox.x, 5000 - state.viewBox.width));
+                // state.viewBox.y = Math.max(0, Math.min(state.viewBox.y, 5000 - state.viewBox.height));
+                
+                // svg.setAttribute('viewBox', 
+                //       `${state.viewBox.x} ${state.viewBox.y} ${state.viewBox.width} ${state.viewBox.height}`
+                // );
+                
+                // const scrollXRatio = state.viewBox.x / (5000 - state.viewBox.width);
+                // const scrollYRatio = state.viewBox.y / (5000 - state.viewBox.height);
+                
+                // const maxScrollX = container.scrollWidth - container.clientWidth;
+                // const maxScrollY = container.scrollHeight - container.clientHeight;
+                container.scrollLeft -= dx;
+                container.scrollTop -= dy;
+                state.panStart = { x: svgP.x, y: svgP.y };
+            } else if (state.draggingConnection !== null) {
+                const conn = state.connections[state.draggingConnection];
+                conn.rectPos = {
+                    x: svgP.x - state.connectionOffset.x,
+                    y: svgP.y - state.connectionOffset.y
+                };
+                updateMap();
+            } else if (state.selection.active) {
+                state.selection.current = { x: svgP.x, y: svgP.y };
+                updateSelectionRect();
+            } else if (state.resizing !== null) {
+                const area = state.areas[state.resizing];
+                const dx = svgP.x - state.dragStart.x;
+                const dy = svgP.y - state.dragStart.y;
+                
+                // Calculate resize factor based on drag direction
+                // Positive when dragging down-right, negative when dragging up-left
+                const dragDistance = Math.sqrt(dx * dx + dy * dy);
+                const dragDirection = Math.sign(dx + dy);
+                const newSize = Math.max(30, state.initialSize + (dragDistance * dragDirection));
+                
+                area.size = newSize;
+                updateMap();
+            } else if (state.dragging) {
+                const dx = svgP.x - state.offset.x - state.areas[Array.from(state.selection.selectedAreas)[0]].pos.x;
+                const dy = svgP.y - state.offset.y - state.areas[Array.from(state.selection.selectedAreas)[0]].pos.y;
+                
+                state.selection.selectedAreas.forEach(areaIndex => {
+                    const area = state.areas[areaIndex];
+                    area.pos.x += dx;
+                    area.pos.y += dy;
+                });
+
+                // Move selected rectangle connections
+                state.selection.selectedConnections.forEach(connIndex => {
+                    const conn = state.connections[connIndex];
+                    if (conn.useRect && conn.rectPos) {
+                        conn.rectPos.x += dx;
+                        conn.rectPos.y += dy;
+                    }
+                });
+                updateMap();
+            }
+        }
+
+        function endDrag(e) {
+            if (state.selection.active) {
+                finalizeSelection();
+            }
+            state.dragging = null;
+            state.resizing = null;
+            state.selection.active = false;
+            state.draggingConnection = null;
+            state.panning = false;
+            document.getElementById('selection-rect').style.display = 'none';
+            updateMap();
+        }
+
+        function updateSelectionRect() {
+            const rect = document.getElementById('selection-rect');
+            const x = Math.min(state.selection.start.x, state.selection.current.x);
+            const y = Math.min(state.selection.start.y, state.selection.current.y);
+            const width = Math.abs(state.selection.current.x - state.selection.start.x);
+            const height = Math.abs(state.selection.current.y - state.selection.start.y);
+            
+            rect.setAttribute('x', x);
+            rect.setAttribute('y', y);
+            rect.setAttribute('width', width);
+            rect.setAttribute('height', height);
+            rect.style.display = 'block';
+            
+        }
+
+        function finalizeSelection() {
+            const x1 = Math.min(state.selection.start.x, state.selection.current.x);
+            const y1 = Math.min(state.selection.start.y, state.selection.current.y);
+            const x2 = Math.max(state.selection.start.x, state.selection.current.x);
+            const y2 = Math.max(state.selection.start.y, state.selection.current.y);
+
+            state.areas.forEach((area, index) => {
+                // Check if any part of the circle intersects with the selection rectangle
+                const circleLeft = area.pos.x - area.size;
+                const circleRight = area.pos.x + area.size;
+                const circleTop = area.pos.y - area.size;
+                const circleBottom = area.pos.y + area.size;
+
+                if (!(circleRight < x1 || // circle is completely to the left
+                    circleLeft > x2 || // circle is completely to the right
+                    circleBottom < y1 || // circle is completely above
+                    circleTop > y2)) { // circle is completely below
+                    state.selection.selectedAreas.add(index);
+                }
+            });
+
+            // Select rectangle connections
+            state.connections.forEach((conn, index) => {
+                if (conn.useRect && conn.rectPos) {
+                    const rectLeft = conn.rectPos.x - 50;  // Half of rectangle width
+                    const rectRight = conn.rectPos.x + 50;
+                    const rectTop = conn.rectPos.y - 15;   // Half of rectangle height
+                    const rectBottom = conn.rectPos.y + 15;
+
+                    if (!(rectRight < x1 || rectLeft > x2 || rectBottom < y1 || rectTop > y2)) {
+                        state.selection.selectedConnections.add(index);
+                    }
+                }
+            });
+            updateMap();
+        }
+
+        
+        // Map rendering
+        function updateConnections() {
+            const connectionsGroup = document.getElementById('connections');
+            connectionsGroup.innerHTML = '';
+
+            state.connections.forEach((conn, index) => {
+                const source = state.areas[conn.source];
+                const target = state.areas[conn.target];
+                
+                if (!source?.pos?.x || !source?.pos?.y || !target?.pos?.x || !target?.pos?.y) {
+                    console.warn('Invalid connection - missing position data:', conn);
+                    return;
+                }
+
+                if (conn.useRect) {
+                    // Create rectangle group
+                    const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+                    
+                    // Draw line from source to rectangle
+                    const line = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                    line.setAttribute("d", `M ${source.pos.x} ${source.pos.y} L ${conn.rectPos.x} ${conn.rectPos.y}`);
+                    line.setAttribute("stroke", "#666");
+                    line.setAttribute("stroke-width", "2");
+                    line.setAttribute("fill", "none");
+                    line.setAttribute("marker-end", "url(#arrowhead)");
+                    g.appendChild(line);
+
+                    // Create rectangle
+                    const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+                    rect.setAttribute("x", conn.rectPos.x - 50);
+                    rect.setAttribute("y", conn.rectPos.y - 15);
+                    rect.setAttribute("width", 100);
+                    rect.setAttribute("height", 30);
+                    rect.setAttribute("fill", state.selection.selectedConnections.has(index) ? "#bfdbfe" : "#fff");
+                    rect.setAttribute("stroke", state.selection.selectedConnections.has(index) ? "#3b82f6" : "#666");
+                    rect.setAttribute("stroke-width", "2");
+                    rect.setAttribute("rx", "4");
+                    rect.setAttribute("cursor", "move");
+                    
+                    // Add mousedown event for dragging
+                    rect.onmousedown = (e) => {
+                        e.stopPropagation();
+                        const svg = document.getElementById('map');
+                        const pt = svg.createSVGPoint();
+                        pt.x = e.clientX;
+                        pt.y = e.clientY;
+                        const svgP = pt.matrixTransform(svg.getScreenCTM().inverse());
+                        
+                        state.draggingConnection = index;
+                        state.connectionOffset = {
+                            x: svgP.x - conn.rectPos.x,
+                            y: svgP.y - conn.rectPos.y
+                        };
+                    };
+                    g.appendChild(rect);
+
+                    // Add text
+                    const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+                    text.setAttribute("x", conn.rectPos.x);
+                    text.setAttribute("y", conn.rectPos.y);
+                    text.setAttribute("text-anchor", "middle");
+                    text.setAttribute("dominant-baseline", "middle");
+                    text.setAttribute("font-family", "Arial");
+                    text.setAttribute("font-size", "12px");
+                    text.setAttribute("pointer-events", "none");
+                    text.textContent = `To ${target.name}`;
+                    g.appendChild(text);
+
+                    connectionsGroup.appendChild(g);
+                } else {
+                    // Original direct line connection code
+                    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                    path.setAttribute("d", `M ${source.pos.x} ${source.pos.y} L ${target.pos.x} ${target.pos.y}`);
+                    path.setAttribute("fill", "none");
+                    path.setAttribute("stroke", "#666");
+                    path.setAttribute("stroke-width", "2");
+                    path.setAttribute("marker-end", "url(#arrowhead)");
+                    connectionsGroup.appendChild(path);
+                }
+            });
+        }
+        
+        // Force-directed layout
+        class ForceDirectedGraph {
+            constructor(areas, connections, width, height) {
+                this.width = width;
+                this.height = height;
+                this.areas = areas;
+                this.connections = connections;
+            }
+
+            applyForces() {
+                const repulsionForce = 5000;
+                const springForce = 0.01;
+                const springLength = 200;
+                const damping = 0.95;
+
+                // Reset forces
+                this.areas.forEach(area => {
+                    area.force = new Vector(0, 0);
+                    area.velocity = area.velocity || new Vector(0, 0);
+                });
+
+                // Apply repulsion between all areas
+                for (let i = 0; i < this.areas.length; i++) {
+                    for (let j = i + 1; j < this.areas.length; j++) {
+                        const area1 = this.areas[i];
+                        const area2 = this.areas[j];
+                        const delta = new Vector(
+                            area2.pos.x - area1.pos.x,
+                            area2.pos.y - area1.pos.y
+                        );
+                        const distance = Math.max(delta.magnitude(), 1);
+                        const minDistance = area1.size + area2.size + 20;
+
+                        if (distance < minDistance) {
+                            const force = delta.normalize().multiply(repulsionForce / (distance * distance));
+                            area2.force = area2.force.add(force);
+                            area1.force = area1.force.add(force.multiply(-1));
+                        }
+                    }
+                }
+
+                // Apply spring forces for connections
+                this.connections.forEach(conn => {
+                    const source = this.areas[conn.source];
+                    const target = this.areas[conn.target];
+                    const delta = new Vector(
+                        target.pos.x - source.pos.x,
+                        target.pos.y - source.pos.y
+                    );
+                    const distance = delta.magnitude();
+                    const springF = delta.normalize().multiply((distance - springLength) * springForce);
+                    source.force = source.force.add(springF);
+                    target.force = target.force.add(springF.multiply(-1));
+                });
+
+                // Update positions
+                this.areas.forEach(area => {
+                    area.velocity = area.velocity.add(area.force).multiply(damping);
+                    area.pos.x += area.velocity.x;
+                    area.pos.y += area.velocity.y;
+
+                    // Keep within bounds
+                    area.pos.x = Math.max(area.size, Math.min(this.width - area.size, area.pos.x));
+                    area.pos.y = Math.max(area.size, Math.min(this.height - area.size, area.pos.y));
+                });
+            }
+        }
+
+        // Initialize the map
+        function initializeMap(areasData) {
+            const width = 800;
+            const height = 600;
+            
+            // Initialize areas with random positions
+            state.areas = areasData.areas.map(area => ({
+                ...area,
+                size: 30 + 30 * Math.max(0, Math.min(1, 1 - (100 / (area.rooms.length)))),
+                pos: new Vector(
+                    width/2 + (Math.random() - 0.5) * width/4,
+                    height/2 + (Math.random() - 0.5) * height/4
+                ),
+                velocity: new Vector(0, 0),
+                force: new Vector(0, 0)
+            }));
+
+            // Find connections
+            state.connections = findDirectionalConnections(state.areas);
+
+            // Set up event listeners
+            const svg = document.getElementById('map');
+            svg.addEventListener('mousemove', handleDrag);
+            svg.addEventListener('mouseup', endDrag);
+            svg.addEventListener('mouseleave', endDrag);
+            if (!state.viewBox) {
+                state.viewBox = { x: 0, y: 0, width: 5000, height: 5000 };
+                const svg = document.getElementById('map');
+                svg.setAttribute('viewBox', 
+                    `${state.viewBox.x} ${state.viewBox.y} ${state.viewBox.width} ${state.viewBox.height}`
+                );
+            }
+            updateMap();
+        }
+
+        function findDirectionalConnections(areas) {
+            const connections = [];
+            areas.forEach((sourceArea, sourceAreaIndex) => {
+                sourceArea.rooms.forEach(sourceRoom => {
+                    Object.entries(sourceRoom.exits).forEach(([direction, targetId]) => {
+                        if (targetId) {
+                            const targetAreaIndex = areas.findIndex(targetArea => 
+                                targetArea.rooms.some(r => r.id === targetId)
+                            );
+                            if (targetAreaIndex !== -1 && sourceAreaIndex !== targetAreaIndex) {
+                                connections.push({
+                                    source: sourceAreaIndex,
+                                    target: targetAreaIndex,
+                                    direction: direction
+                                });
+                            }
+                        }
+                    });
+                });
+            });
+
+            // Deduplicate while preserving direction information
+            return connections.filter((conn, index) => {
+                const reverse = connections.findIndex(c => 
+                    c.source === conn.target && c.target === conn.source
+                );
+                return reverse === -1 || index < reverse;
+            });
+        }
+
+        function resetPositions() {
+            const width = 5000;
+            const height = 5000;
+            
+            state.areas.forEach(area => {
+                area.pos.x = width/2 + (Math.random() - 0.5) * width/4;
+                area.pos.y = height/2 + (Math.random() - 0.5) * height/4;
+                area.velocity = new Vector(0, 0);
+                area.force = new Vector(0, 0);
+                area.size = 30 + 30 * Math.max(0, Math.min(1, 1 - (100 / (area.rooms.length))));
+            });
+            
+            updateMap();
+        }
+
+        function runSimulation() {
+            const graph = new ForceDirectedGraph(state.areas, state.connections, 5000, 5000);
+            let iteration = 0;
+            
+            function animate() {
+                graph.applyForces();
+                updateMap();
+                iteration++;
+                
+                if (iteration < 100) {
+                    requestAnimationFrame(animate);
+                }
+            }
+            
+            animate();
+        }
+        
+        // Function to load new data
+        function loadNewData(jsonData) {
+            try {
+                const data = JSON.parse(jsonData);
+                initializeMap(data);
+            } catch (error) {
+                console.error('Error parsing JSON data:', error);
+            }
+        }
+
+        function saveLayout() {
+            const layout = {
+                areas: state.areas.map(area => ({
+                    name: area.name,
+                    position: { x: area.pos.x, y: area.pos.y },
+                    size: area.size
+                })),
+                connections: state.connections.map(conn => ({
+                    sourceName: state.areas[conn.source].name,
+                    targetName: state.areas[conn.target].name,
+                    direction: conn.direction,
+                    useRect: conn.useRect,
+                    rectPos: conn.rectPos
+                }))
+            };
+
+            const blob = new Blob([JSON.stringify(layout, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'map-layout.json';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        function loadLayout(layoutData) {
+            state.areas.length = 0;
+            state.areas.push(...layoutData.areas.map(item => ({
+                name: item.name,
+                rooms: [],
+                pos: new Vector(item.position.x, item.position.y),
+                size: item.size,
+                velocity: new Vector(0, 0),
+                force: new Vector(0, 0)
+            })));
+
+            state.connections.length = 0;
+            layoutData.connections.forEach(conn => {
+                const sourceIndex = state.areas.findIndex(a => a.name === conn.sourceName);
+                const targetIndex = state.areas.findIndex(a => a.name === conn.targetName);
+                
+                if (sourceIndex !== -1 && targetIndex !== -1) {
+                    state.connections.push({
+                        source: sourceIndex,
+                        target: targetIndex,
+                        direction: conn.direction,
+                        useRect: conn.useRect,
+                        rectPos: conn.rectPos
+                    });
+                }
+            });
+
+            state.dragging = null;
+            state.resizing = null;
+            state.offset = { x: 0, y: 0 };
+            state.initialSize = 0;
+            
+            updateMap();
+        }
+
+        function updateAreas() {
+            const areasGroup = document.getElementById('areas');
+            areasGroup.innerHTML = '';
+
+            state.areas.forEach((area, index) => {
+                const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+
+                const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+                circle.setAttribute("cx", area.pos.x);
+                circle.setAttribute("cy", area.pos.y);
+                circle.setAttribute("r", area.size);
+                circle.setAttribute("fill", "#e2e8f0");
+                circle.setAttribute("stroke", "#64748b");
+                circle.setAttribute("stroke-width", "2");
+                circle.setAttribute("class", `area-circle${state.selection.selectedAreas.has(index) ? ' selected' : ''}`);
+                circle.onmousedown = (e) => startDrag(e, index);
+                g.appendChild(circle);
+
+                // Resize handle
+                const handle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+                handle.setAttribute("cx", area.pos.x + area.size * Math.cos(Math.PI / 4));
+                handle.setAttribute("cy", area.pos.y + area.size * Math.sin(Math.PI / 4));
+                handle.setAttribute("r", 5);
+                handle.setAttribute("class", "resize-handle");
+                handle.onmousedown = (e) => {
+                    e.stopPropagation();
+                    startDrag(e, index, true);
+                };
+                g.appendChild(handle);
+
+                // Text label
+                const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+                text.setAttribute("x", area.pos.x);
+                text.setAttribute("y", area.pos.y);
+                text.setAttribute("text-anchor", "middle");
+                text.setAttribute("dominant-baseline", "middle");
+                text.setAttribute("font-family", "Arial");
+                text.setAttribute("font-size", `${Math.min(area.size / 4, 14)}px`);
+                text.setAttribute("class", "area-text");
+                text.textContent = area.name;
+                g.appendChild(text);
+
+                areasGroup.appendChild(g);
+                
+            });
+            
+        }
+
+        function addNewArea() {
+            const width = 100;
+            const height = 100;
+            const newArea = {
+                name: "No Name",
+                rooms: [],
+                pos: new Vector(
+                    width/2 + (Math.random() - 0.5) * width/4,
+                    height/2 + (Math.random() - 0.5) * height/4
+                ),
+                size: 30,
+                velocity: new Vector(0, 0),
+                force: new Vector(0, 0)
+            };
+            
+            state.areas.push(newArea);
+            updateMap();
+        }
+
+        function updateInfoPanel() {
+            const panel = document.getElementById('info-panel');
+            const nameInput = document.getElementById('area-name');
+            const connectionList = document.getElementById('connection-list');
+            
+            if (state.selection.selectedAreas.size === 1) {
+                panel.style.display = 'block';
+                const areaIndex = Array.from(state.selection.selectedAreas)[0];
+                const area = state.areas[areaIndex];
+                
+                // Update name
+                nameInput.value = area.name;
+                nameInput.onchange = (e) => {
+                    area.name = e.target.value;
+                    updateMap();
+                };
+                
+                // Update connections list
+                connectionList.innerHTML = '';
+                state.connections
+                    .filter(conn => conn.source === areaIndex)// || conn.target === areaIndex)
+                    .forEach(conn => {
+                        const li = document.createElement('li');
+                        li.className = 'connection-item';
+                        
+                        const textContainer = document.createElement('div');
+                        textContainer.style.display = 'flex';
+                        textContainer.style.flexDirection = 'column';
+                        
+                        const text = document.createElement('span');
+                        text.textContent = `${state.areas[conn.source].name} → ${state.areas[conn.target].name}`;
+                        
+                        const checkbox = document.createElement('input');
+                        checkbox.type = 'checkbox';
+                        checkbox.checked = conn.useRect;
+                        checkbox.onchange = (e) => {
+                            conn.useRect = e.target.checked;
+                            if (conn.useRect && !conn.rectPos) {
+                                conn.rectPos = {
+                                    x: (state.areas[conn.source].pos.x + state.areas[conn.target].pos.x) / 2,
+                                    y: (state.areas[conn.source].pos.y + state.areas[conn.target].pos.y) / 2
+                                };
+                            }
+                            updateMap();
+                        };
+                        
+                        const checkboxLabel = document.createElement('label');
+                        checkboxLabel.style.fontSize = '0.8em';
+                        checkboxLabel.style.display = 'flex';
+                        checkboxLabel.style.alignItems = 'center';
+                        checkboxLabel.style.gap = '4px';
+                        checkboxLabel.appendChild(checkbox);
+                        checkboxLabel.appendChild(document.createTextNode('Use rectangle'));
+                        
+                        textContainer.appendChild(text);
+                        textContainer.appendChild(checkboxLabel);
+                        
+                        const deleteBtn = document.createElement('button');
+                        deleteBtn.className = 'delete-btn';
+                        deleteBtn.textContent = 'Delete';
+                        deleteBtn.onclick = () => deleteConnection(conn);
+                        
+                        li.appendChild(textContainer);
+                        li.appendChild(deleteBtn);
+                        connectionList.appendChild(li);
+
+                        checkbox.onchange = (e) => {
+                            conn.useRect = e.target.checked;
+                            if (conn.useRect && !conn.rectPos) {
+                                conn.rectPos = {
+                                    x: (state.areas[conn.source].pos.x + state.areas[conn.target].pos.x) / 2,
+                                    y: (state.areas[conn.source].pos.y + state.areas[conn.target].pos.y) / 2
+                                };
+                            }
+                            
+                            // Find and update bidirectional connection if it exists
+                            const reverseConn = state.connections.find(c => 
+                                c.source === conn.target && c.target === conn.source
+                            );
+                            if (reverseConn) {
+                                reverseConn.useRect = e.target.checked;
+                                if (reverseConn.useRect && !reverseConn.rectPos) {
+                                    // Position the reverse connection rectangle slightly offset
+                                    reverseConn.rectPos = {
+                                        x: (state.areas[conn.source].pos.x + state.areas[conn.target].pos.x) / 2 + 30,
+                                        y: (state.areas[conn.source].pos.y + state.areas[conn.target].pos.y) / 2 + 30
+                                    };
+                                }
+                            }
+                        }
+                    });
+            } else {
+                panel.style.display = 'none';
+            }
+        }
+
+        function deleteConnection(connection) {
+            const index = state.connections.findIndex(conn => 
+                conn.source === connection.source && 
+                conn.target === connection.target
+            );
+            if (index !== -1) {
+                state.connections.splice(index, 1);
+                updateMap();
+            }
+        }
+
+        function deleteSelectedArea() {
+            if (state.selection.selectedAreas.size === 1) {
+                const areaIndex = Array.from(state.selection.selectedAreas)[0];
+                
+                // Remove all connections involving this area
+                state.connections = state.connections.filter(conn => 
+                    conn.source !== areaIndex && conn.target !== areaIndex
+                );
+                
+                // Remove the area
+                state.areas.splice(areaIndex, 1);
+                
+                // Update connection indices
+                state.connections.forEach(conn => {
+                    if (conn.source > areaIndex) conn.source--;
+                    if (conn.target > areaIndex) conn.target--;
+                });
+                
+                // Clear selection
+                state.selection.selectedAreas.clear();
+                state.selection.selectedConnections.clear();
+                updateMap();
+            }
+        }
+
+        function showAddConnectionDialog() {
+            if (state.selection.selectedAreas.size !== 1) return;
+            
+            const sourceIndex = Array.from(state.selection.selectedAreas)[0];
+            const select = document.getElementById('target-area-select');
+            
+            // Clear and populate select options
+            select.innerHTML = '<option value="">Select an area</option>';
+            state.areas.forEach((area, index) => {
+                if (index !== sourceIndex) {
+                    const option = document.createElement('option');
+                    option.value = index;
+                    option.textContent = area.name;
+                    select.appendChild(option);
+                }
+            });
+            
+            // Reset checkboxes
+            document.getElementById('two-way-checkbox').checked = false;
+            document.getElementById('use-rect-checkbox').checked = false;
+            
+            // Show modal
+            document.getElementById('modal-overlay').style.display = 'block';
+        }
+
+        function closeConnectionDialog() {
+            document.getElementById('modal-overlay').style.display = 'none';
+        }
+
+        function addNewConnection() {
+            const sourceIndex = Array.from(state.selection.selectedAreas)[0];
+            const targetSelect = document.getElementById('target-area-select');
+            const targetIndex = parseInt(targetSelect.value);
+            const isTwoWay = document.getElementById('two-way-checkbox').checked;
+            const useRect = document.getElementById('use-rect-checkbox').checked;
+            
+            if (!targetSelect.value) return;
+            
+            const sourcePos = state.areas[sourceIndex].pos;
+            const targetPos = state.areas[targetIndex].pos;
+            
+            // Calculate midpoint for rectangle position
+            const midPoint = {
+                x: (sourcePos.x + targetPos.x) / 2,
+                y: (sourcePos.y + targetPos.y) / 2
+            };
+
+            // Create forward connection
+            const newConnection = {
+                source: sourceIndex,
+                target: targetIndex,
+                direction: 'custom',
+                useRect: useRect,
+                rectPos: midPoint
+            };
+
+            // Add the connection
+            state.connections.push(newConnection);
+
+            // Create reverse connection if two-way is selected
+            if (isTwoWay) {
+                const reverseConnection = {
+                    source: targetIndex,
+                    target: sourceIndex,
+                    direction: 'custom',
+                    useRect: useRect,
+                    rectPos: {
+                        x: midPoint.x + 30,
+                        y: midPoint.y + 30
+                    }
+                };
+                state.connections.push(reverseConnection);
+            }
+            
+            // Update map and close dialog
+            updateMap();
+            closeConnectionDialog();
+        }
+        // Modify updateMap to include info panel update
+        function updateMap() {
+            updateConnections();
+            updateAreas();
+            updateInfoPanel();
+        }
+        // Modify the initialization
+        document.getElementById('dataInput').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    try {
+                        const data = JSON.parse(e.target.result);
+                        initializeMap(data);
+                    } catch (error) {
+                        console.error('Error parsing JSON file:', error);
+                        alert('Error loading file: Please ensure it is a valid JSON file');
+                    }
+                };
+                reader.readAsText(file);
+            }
+        });
+
+        document.getElementById('layoutInput').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    try {
+                        const layoutData = JSON.parse(e.target.result);
+                        loadLayout(layoutData);
+                    } catch (error) {
+                        console.error('Error parsing layout file:', error);
+                        alert('Error loading layout: Please ensure it is a valid JSON file');
+                    }
+                };
+                reader.readAsText(file);
+            }
+        });
+
+        document.getElementById('map').addEventListener('mousedown', function(e) {
+            if (e.target === this) {
+                if (e.shiftKey) {
+                    startDrag(e, -1, false);
+                } else {
+                    // Start panning
+                    const svg = document.getElementById('map');
+                    const pt = svg.createSVGPoint();
+                    pt.x = e.clientX;
+                    pt.y = e.clientY;
+                    const svgP = pt.matrixTransform(svg.getScreenCTM().inverse());
+                    
+                    state.panning = true;
+                    state.panStart = { x: svgP.x, y: svgP.y };
+                    state.selection.selectedAreas.clear();
+                    state.selection.selectedConnections.clear();
+                    updateMap();
+                }
+            }
+        });
+
+        document.getElementById('map-container').addEventListener('wheel', function(e) {
+            e.preventDefault();
+            const container = document.getElementById('map-container');
+            const svg = document.getElementById('map');
+            const pt = svg.createSVGPoint();
+            pt.x = e.clientX;
+            pt.y = e.clientY;
+            const svgP = pt.matrixTransform(svg.getScreenCTM().inverse());
+            
+            // Calculate zoom factor
+            const zoomFactor = e.deltaY < 0 ? 1.1 : 0.9;
+            // Get current dimensions
+            const currentWidth = parseInt(svg.getAttribute('width'));
+            const currentHeight = parseInt(svg.getAttribute('height'));
+            // Calculate new dimensions
+            const newWidth = state.viewBox.width * zoomFactor;
+            const newHeight = state.viewBox.height * zoomFactor;
+            
+            // Limit zoom level
+            if (newWidth >= 500 && newWidth <= 10000) {
+                const rect = container.getBoundingClientRect();
+                const mouseX = e.clientX - rect.left;
+                const mouseY = e.clientY - rect.top;
+                
+                // Calculate mouse position as a percentage of the viewable area
+                const mouseXRatio = mouseX / container.clientWidth;
+                const mouseYRatio = mouseY / container.clientHeight;
+                
+                // Calculate the mouse position relative to the document
+                const mouseDocX = mouseX + container.scrollLeft;
+                const mouseDocY = mouseY + container.scrollTop;
+                
+                // Calculate the mouse position as a ratio of the full content
+                const mouseContentXRatio = mouseDocX / currentWidth;
+                const mouseContentYRatio = mouseDocY / currentHeight;
+                
+                // Update SVG dimensions
+                svg.setAttribute('width', newWidth);
+                svg.setAttribute('height', newHeight);
+                state.viewBox.width = newWidth;
+                state.viewBox.height = newHeight;
+                // Calculate new scroll position to keep the mouse point fixed
+                const newMouseDocX = newWidth * mouseContentXRatio;
+                const newMouseDocY = newHeight * mouseContentYRatio;
+                
+                const newScrollLeft = newMouseDocX - mouseX;
+                const newScrollTop = newMouseDocY - mouseY;
+                
+                // Update scroll position
+                container.scrollLeft = newScrollLeft;
+                container.scrollTop = newScrollTop;
+            }
+        });
+    </script>
+
+    <div id="modal-overlay" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 1000;">
+        <div id="modal-content" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border-radius: 8px; width: 400px;">
+            <h2 style="margin-bottom: 20px; font-size: 1.5em;">Add New Connection</h2>
+            
+            <div style="margin-bottom: 20px;">
+                <label style="display: block; margin-bottom: 8px;">Connect to Area:</label>
+                <select id="target-area-select" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                    <option value="">Select an area</option>
+                </select>
+            </div>
+
+            <div style="margin-bottom: 16px;">
+                <label style="display: flex; align-items: center; gap: 8px;">
+                    <input type="checkbox" id="two-way-checkbox">
+                    Two-way connection
+                </label>
+            </div>
+
+            <div style="margin-bottom: 24px;">
+                <label style="display: flex; align-items: center; gap: 8px;">
+                    <input type="checkbox" id="use-rect-checkbox">
+                    Use rectangle for connection(s)
+                </label>
+            </div>
+
+            <div style="display: flex; justify-content: flex-end; gap: 8px;">
+                <button onclick="closeConnectionDialog()" style="padding: 8px 16px; border: 1px solid #ccc; border-radius: 4px; background: white; color: red;">Cancel</button>
+                <button onclick="addNewConnection()" style="padding: 8px 16px; border-radius: 4px; background: #3b82f6; color: white; border: none;">Add Connection</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
