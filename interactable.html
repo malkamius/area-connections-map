@@ -590,15 +590,15 @@
             }
         }
 
-        // Initialize the map
         function initializeMap(areasData) {
-            const width = 800;
-            const height = 600;
+            const width = 5000;
+            const height = 5000;
             
             // Initialize areas with random positions
             state.areas = areasData.areas.map(area => ({
                 ...area,
-                size: 30 + 30 * Math.max(0, Math.min(1, 1 - (100 / (area.rooms.length)))),
+                // Calculate size based on number of rooms in the dictionary
+                size: 30 + 30 * Math.max(0, Math.min(1, 1 - (100 / Object.keys(area.rooms).length))),
                 pos: new Vector(
                     width/2 + (Math.random() - 0.5) * width/4,
                     height/2 + (Math.random() - 0.5) * height/4
@@ -617,7 +617,6 @@
             svg.addEventListener('mouseleave', endDrag);
             if (!state.viewBox) {
                 state.viewBox = { x: 0, y: 0, width: 5000, height: 5000 };
-                const svg = document.getElementById('map');
                 svg.setAttribute('viewBox', 
                     `${state.viewBox.x} ${state.viewBox.y} ${state.viewBox.width} ${state.viewBox.height}`
                 );
@@ -628,31 +627,42 @@
         function findDirectionalConnections(areas) {
             const connections = [];
             areas.forEach((sourceArea, sourceAreaIndex) => {
-                sourceArea.rooms.forEach(sourceRoom => {
+                // Iterate over rooms dictionary instead of array
+                Object.entries(sourceArea.rooms).forEach(([sourceRoomId, sourceRoom]) => {
                     Object.entries(sourceRoom.exits).forEach(([direction, targetId]) => {
                         if (targetId) {
+                            // Find target area by checking room dictionaries
                             const targetAreaIndex = areas.findIndex(targetArea => 
-                                targetArea.rooms.some(r => r.id === targetId)
+                                targetId.toString() in targetArea.rooms
                             );
                             if (targetAreaIndex !== -1 && sourceAreaIndex !== targetAreaIndex) {
-                                connections.push({
-                                    source: sourceAreaIndex,
-                                    target: targetAreaIndex,
-                                    direction: direction
-                                });
+                                const existingConnection = connections.find(conn => 
+                                    conn.source === sourceAreaIndex && 
+                                    conn.target === targetAreaIndex
+                                );
+
+                                if (!existingConnection) {
+                                    connections.push({
+                                        source: sourceAreaIndex,
+                                        target: targetAreaIndex,
+                                        direction: direction,
+                                        useRect: false,
+                                        rectPos: null
+                                    });
+                                }
                             }
                         }
                     });
                 });
             });
 
-            // Deduplicate while preserving direction information
-            return connections.filter((conn, index) => {
-                const reverse = connections.findIndex(c => 
-                    c.source === conn.target && c.target === conn.source
-                );
-                return reverse === -1 || index < reverse;
-            });
+            // Deduplicate connections while preserving direction information
+            return connections; //.filter((conn, index) => {
+            //     const reverse = connections.findIndex(c => 
+            //         c.source === conn.target && c.target === conn.source
+            //     );
+            //     return reverse === -1 || index < reverse;
+            // });
         }
 
         function resetPositions() {
@@ -664,7 +674,8 @@
                 area.pos.y = height/2 + (Math.random() - 0.5) * height/4;
                 area.velocity = new Vector(0, 0);
                 area.force = new Vector(0, 0);
-                area.size = 30 + 30 * Math.max(0, Math.min(1, 1 - (100 / (area.rooms.length))));
+                // Update size calculation for dictionary-based rooms
+                area.size = 30 + 30 * Math.max(0, Math.min(1, 1 - (100 / Object.keys(area.rooms).length)));
             });
             
             updateMap();
@@ -728,7 +739,7 @@
             state.areas.length = 0;
             state.areas.push(...layoutData.areas.map(item => ({
                 name: item.name,
-                rooms: [],
+                rooms: {},
                 pos: new Vector(item.position.x, item.position.y),
                 size: item.size,
                 velocity: new Vector(0, 0),
@@ -811,8 +822,9 @@
             const width = 100;
             const height = 100;
             const newArea = {
-                name: "No Name",
-                rooms: [],
+                name: "New Area",
+                // Initialize with empty rooms dictionary instead of array
+                rooms: {},
                 pos: new Vector(
                     width/2 + (Math.random() - 0.5) * width/4,
                     height/2 + (Math.random() - 0.5) * height/4
@@ -846,17 +858,50 @@
                 // Update connections list
                 connectionList.innerHTML = '';
                 state.connections
-                    .filter(conn => conn.source === areaIndex)// || conn.target === areaIndex)
+                    .filter(conn => conn.source === areaIndex)
                     .forEach(conn => {
                         const li = document.createElement('li');
                         li.className = 'connection-item';
-                        
+                        const reverseConn = state.connections.find(c => 
+                            c.source === conn.target && c.target === conn.source
+                        );
                         const textContainer = document.createElement('div');
                         textContainer.style.display = 'flex';
                         textContainer.style.flexDirection = 'column';
                         
-                        const text = document.createElement('span');
-                        text.textContent = `${state.areas[conn.source].name} → ${state.areas[conn.target].name}`;
+                        const text = document.createElement('div');
+                        text.style.display = 'flex';
+                        text.style.alignItems = 'center';
+                        text.style.gap = '4px';
+                        
+                        // Create source area link
+                        const sourceLink = document.createElement('a');
+                        sourceLink.href = '#';
+                        sourceLink.textContent = state.areas[conn.source].name;
+                        sourceLink.style.color = '#3b82f6';
+                        sourceLink.style.textDecoration = 'none';
+                        sourceLink.onclick = (e) => {
+                            e.preventDefault();
+                            centerOnArea(conn.source);
+                        };
+                        
+                        // Create target area link
+                        const targetLink = document.createElement('a');
+                        targetLink.href = '#';
+                        targetLink.textContent = state.areas[conn.target].name;
+                        targetLink.style.color = '#3b82f6';
+                        targetLink.style.textDecoration = 'none';
+                        targetLink.onclick = (e) => {
+                            e.preventDefault();
+                            centerOnArea(conn.target);
+                        };
+                        
+                        // Add arrow symbol based on connection type
+                        const arrows = document.createTextNode(reverseConn ? ' ←→ ' : ' → ');
+                        
+                        text.appendChild(sourceLink);
+                        text.appendChild(arrows);
+                        text.appendChild(targetLink);
                         
                         const checkbox = document.createElement('input');
                         checkbox.type = 'checkbox';
@@ -868,6 +913,16 @@
                                     x: (state.areas[conn.source].pos.x + state.areas[conn.target].pos.x) / 2,
                                     y: (state.areas[conn.source].pos.y + state.areas[conn.target].pos.y) / 2
                                 };
+                            }
+                            
+                            if (reverseConn) {
+                                reverseConn.useRect = e.target.checked;
+                                if (reverseConn.useRect && !reverseConn.rectPos) {
+                                    reverseConn.rectPos = {
+                                        x: (state.areas[conn.source].pos.x + state.areas[conn.target].pos.x) / 2 + 30,
+                                        y: (state.areas[conn.source].pos.y + state.areas[conn.target].pos.y) / 2 + 30
+                                    };
+                                }
                             }
                             updateMap();
                         };
@@ -891,31 +946,6 @@
                         li.appendChild(textContainer);
                         li.appendChild(deleteBtn);
                         connectionList.appendChild(li);
-
-                        checkbox.onchange = (e) => {
-                            conn.useRect = e.target.checked;
-                            if (conn.useRect && !conn.rectPos) {
-                                conn.rectPos = {
-                                    x: (state.areas[conn.source].pos.x + state.areas[conn.target].pos.x) / 2,
-                                    y: (state.areas[conn.source].pos.y + state.areas[conn.target].pos.y) / 2
-                                };
-                            }
-                            
-                            // Find and update bidirectional connection if it exists
-                            const reverseConn = state.connections.find(c => 
-                                c.source === conn.target && c.target === conn.source
-                            );
-                            if (reverseConn) {
-                                reverseConn.useRect = e.target.checked;
-                                if (reverseConn.useRect && !reverseConn.rectPos) {
-                                    // Position the reverse connection rectangle slightly offset
-                                    reverseConn.rectPos = {
-                                        x: (state.areas[conn.source].pos.x + state.areas[conn.target].pos.x) / 2 + 30,
-                                        y: (state.areas[conn.source].pos.y + state.areas[conn.target].pos.y) / 2 + 30
-                                    };
-                                }
-                            }
-                        }
                     });
             } else {
                 panel.style.display = 'none';
@@ -1041,6 +1071,36 @@
             updateConnections();
             updateAreas();
             updateInfoPanel();
+        }
+
+        // Function to center view on an area
+        function centerOnArea(areaIndex) {
+            const area = state.areas[areaIndex];
+            if (!area) return;
+            
+            const container = document.getElementById('map-container');
+            const svg = document.getElementById('map');
+            
+            // Calculate the center position
+            const svgWidth = parseInt(svg.getAttribute('width'));
+            const svgHeight = parseInt(svg.getAttribute('height'));
+            
+            // Calculate scroll position to center the area
+            const scrollX = area.pos.x - (container.clientWidth / 2);
+            const scrollY = area.pos.y - (container.clientHeight / 2);
+            
+            // Smooth scroll to the position
+            container.scrollTo({
+                left: scrollX,
+                top: scrollY,
+                behavior: 'smooth'
+            });
+            
+            // Select the area
+            state.selection.selectedAreas.clear();
+            state.selection.selectedConnections.clear();
+            state.selection.selectedAreas.add(areaIndex);
+            updateMap();
         }
         // Modify the initialization
         document.getElementById('dataInput').addEventListener('change', function(e) {

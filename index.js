@@ -1,4 +1,3 @@
-// index.js
 const fs = require('fs');
 const path = require('path');
 
@@ -54,11 +53,12 @@ function getDirectionVector(direction) {
 function findDirectionalConnections(areas) {
     const connections = [];
     areas.forEach((sourceArea, sourceAreaIndex) => {
-        sourceArea.rooms.forEach(sourceRoom => {
-            Object.entries(sourceRoom.exits).forEach(([direction, targetId]) => {
+        // Iterate over rooms dictionary instead of array
+        Object.entries(sourceArea.rooms).forEach(([roomId, room]) => {
+            Object.entries(room.exits).forEach(([direction, targetId]) => {
                 if (targetId) {
                     const targetAreaIndex = areas.findIndex(targetArea => 
-                        targetArea.rooms.some(r => r.id === targetId)
+                        Object.keys(targetArea.rooms).includes(targetId.toString())
                     );
                     if (targetAreaIndex !== -1 && sourceAreaIndex !== targetAreaIndex) {
                         connections.push({
@@ -86,10 +86,10 @@ class ForceDirectedGraph {
         this.width = width;
         this.height = height;
         
-        // Initialize areas with random positions
+        // Initialize areas with random positions, calculate size based on number of rooms
         this.areas = areas.map(area => ({
             ...area,
-            size: 30 + 30 * Math.max(0, Math.min(1, 1 - (100 / (area.rooms.length)))),
+            size: 30 + 30 * Math.max(0, Math.min(1, 1 - (100 / Object.keys(area.rooms).length))),
             pos: new Vector(
                 width/2 + (Math.random() - 0.5) * width/4,
                 height/2 + (Math.random() - 0.5) * height/4
@@ -105,7 +105,7 @@ class ForceDirectedGraph {
         const springForce = 0.01;
         const springLength = 200;
         const damping = 0.95;
-        const directionBias = 2.0; // Strength of directional positioning
+        const directionBias = 2.0;
 
         // Reset forces
         this.areas.forEach(area => {
@@ -136,21 +136,14 @@ class ForceDirectedGraph {
             const delta = target.pos.subtract(source.pos);
             const distance = Math.max(delta.magnitude(), 1);
 
-            // Get the ideal direction vector based on the exit direction
             const idealDirection = getDirectionVector(conn.direction);
-            
-            // Calculate the ideal position for the target area
             const idealDistance = springLength;
             const idealPosition = source.pos.add(idealDirection.multiply(idealDistance));
-            
-            // Create a force that pulls the target area toward its ideal position
             const directionalForce = idealPosition.subtract(target.pos).multiply(springForce * directionBias);
-            target.force = target.force.add(directionalForce).validate();
             
-            // Apply a weaker opposing force to the source area
+            target.force = target.force.add(directionalForce).validate();
             source.force = source.force.add(directionalForce.multiply(-0.5)).validate();
 
-            // Apply regular spring force (weaker than the directional force)
             const springF = delta.normalize().multiply((distance - springLength) * springForce * 0.5);
             source.force = source.force.add(springF).validate();
             target.force = target.force.add(springF.multiply(-1)).validate();
@@ -175,43 +168,12 @@ class ForceDirectedGraph {
     }
 }
 
-
-
-function findConnections(areas) {
-    const connections = [];
-    areas.forEach((area, sourceAreaIndex) => {
-        area.rooms.forEach(room => {
-            Object.entries(room.exits).forEach(([direction, targetId]) => {
-                if (targetId) {
-                    const targetAreaIndex = areas.findIndex(a => 
-                        a.rooms.some(r => r.id === targetId)
-                    );
-                    if (targetAreaIndex !== -1 && sourceAreaIndex !== targetAreaIndex) {
-                        connections.push({
-                            source: sourceAreaIndex,
-                            target: targetAreaIndex
-                        });
-                    }
-                }
-            });
-        });
-    });
-
-    return connections.filter((conn, index) => {
-        const reverse = connections.findIndex(c => 
-            c.source === conn.target && c.target === conn.source
-        );
-        return reverse === -1 || index < reverse;
-    });
-}
-
-// Modified generateHTML function to show directional connections
 function generateHTML(areasData) {
     const width = 5000;
     const height = 5000;
     const areas = areasData.areas.map(area => ({
         ...area,
-        size: 30 + 30 * Math.max(0, Math.min(1, 1 - (100 / (area.rooms.length))))
+        size: 30 + 30 * Math.max(0, Math.min(1, 1 - (100 / Object.keys(area.rooms).length)))
     }));
     
     console.log('Processing areas:', areas.length);
@@ -356,7 +318,6 @@ function loadAreasData(filePath) {
         process.exit(1);
     }
 }
-
 
 function main() {
     const args = process.argv.slice(2);
