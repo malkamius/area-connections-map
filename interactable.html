@@ -594,10 +594,10 @@
             const width = 5000;
             const height = 5000;
             
-            // Initialize areas with random positions
-            state.areas = areasData.areas.map(area => ({
+            // Convert areas dictionary entries to include position and visualization data
+            state.areas = Object.entries(areasData.areas).map(([name, area]) => ({
                 ...area,
-                // Calculate size based on number of rooms in the dictionary
+                name,
                 size: 30 + 30 * Math.max(0, Math.min(1, 1 - (100 / Object.keys(area.rooms).length))),
                 pos: new Vector(
                     width/2 + (Math.random() - 0.5) * width/4,
@@ -607,14 +607,15 @@
                 force: new Vector(0, 0)
             }));
 
-            // Find connections
-            state.connections = findDirectionalConnections(state.areas);
+            // Find connections based on dictionary structure
+            state.connections = findDirectionalConnections(areasData.areas);
 
             // Set up event listeners
             const svg = document.getElementById('map');
             svg.addEventListener('mousemove', handleDrag);
             svg.addEventListener('mouseup', endDrag);
             svg.addEventListener('mouseleave', endDrag);
+            
             if (!state.viewBox) {
                 state.viewBox = { x: 0, y: 0, width: 5000, height: 5000 };
                 svg.setAttribute('viewBox', 
@@ -624,27 +625,31 @@
             updateMap();
         }
 
-        function findDirectionalConnections(areas) {
+        function findDirectionalConnections(areasDict) {
             const connections = [];
-            areas.forEach((sourceArea, sourceAreaIndex) => {
-                // Iterate over rooms dictionary instead of array
-                Object.entries(sourceArea.rooms).forEach(([sourceRoomId, sourceRoom]) => {
-                    Object.entries(sourceRoom.exits).forEach(([direction, targetId]) => {
+            const areaNames = Object.keys(areasDict);
+            
+            areaNames.forEach((sourceName, sourceIndex) => {
+                const sourceArea = areasDict[sourceName];
+                Object.entries(sourceArea.rooms).forEach(([roomId, room]) => {
+                    Object.entries(room.exits).forEach(([direction, targetId]) => {
                         if (targetId) {
-                            // Find target area by checking room dictionaries
-                            const targetAreaIndex = areas.findIndex(targetArea => 
-                                targetId.toString() in targetArea.rooms
+                            // Find which area contains the target room
+                            const targetName = areaNames.find(name => 
+                                Object.keys(areasDict[name].rooms).includes(targetId.toString())
                             );
-                            if (targetAreaIndex !== -1 && sourceAreaIndex !== targetAreaIndex) {
+                            
+                            if (targetName && targetName !== sourceName) {
+                                const targetIndex = areaNames.indexOf(targetName);
                                 const existingConnection = connections.find(conn => 
-                                    conn.source === sourceAreaIndex && 
-                                    conn.target === targetAreaIndex
+                                    conn.source === sourceIndex && 
+                                    conn.target === targetIndex
                                 );
 
                                 if (!existingConnection) {
                                     connections.push({
-                                        source: sourceAreaIndex,
-                                        target: targetAreaIndex,
+                                        source: sourceIndex,
+                                        target: targetIndex,
                                         direction: direction,
                                         useRect: false,
                                         rectPos: null
@@ -656,14 +661,9 @@
                 });
             });
 
-            // Deduplicate connections while preserving direction information
-            return connections; //.filter((conn, index) => {
-            //     const reverse = connections.findIndex(c => 
-            //         c.source === conn.target && c.target === conn.source
-            //     );
-            //     return reverse === -1 || index < reverse;
-            // });
+            return connections;
         }
+
 
         function resetPositions() {
             const width = 5000;
@@ -709,12 +709,17 @@
         }
 
         function saveLayout() {
-            const layout = {
-                areas: state.areas.map(area => ({
-                    name: area.name,
+            // Convert array-based state to dictionary format for saving
+            const areasDict = {};
+            state.areas.forEach((area, index) => {
+                areasDict[area.name] = {
                     position: { x: area.pos.x, y: area.pos.y },
                     size: area.size
-                })),
+                };
+            });
+
+            const layout = {
+                areas: areasDict,
                 connections: state.connections.map(conn => ({
                     sourceName: state.areas[conn.source].name,
                     targetName: state.areas[conn.target].name,
@@ -736,31 +741,30 @@
         }
 
         function loadLayout(layoutData) {
-            state.areas.length = 0;
-            state.areas.push(...layoutData.areas.map(item => ({
-                name: item.name,
-                rooms: {},
-                pos: new Vector(item.position.x, item.position.y),
-                size: item.size,
+            // Convert dictionary format back to array for internal state
+            state.areas = Object.entries(layoutData.areas).map(([name, data]) => ({
+                name: name,
+                rooms: {},  // Maintain empty rooms object for compatibility
+                pos: new Vector(data.position.x, data.position.y),
+                size: data.size,
                 velocity: new Vector(0, 0),
                 force: new Vector(0, 0)
-            })));
+            }));
 
-            state.connections.length = 0;
-            layoutData.connections.forEach(conn => {
-                const sourceIndex = state.areas.findIndex(a => a.name === conn.sourceName);
-                const targetIndex = state.areas.findIndex(a => a.name === conn.targetName);
-                
-                if (sourceIndex !== -1 && targetIndex !== -1) {
-                    state.connections.push({
-                        source: sourceIndex,
-                        target: targetIndex,
-                        direction: conn.direction,
-                        useRect: conn.useRect,
-                        rectPos: conn.rectPos
-                    });
-                }
+            // Create a name to index mapping for connection conversion
+            const nameToIndex = {};
+            state.areas.forEach((area, index) => {
+                nameToIndex[area.name] = index;
             });
+
+            // Convert connections using name to index mapping
+            state.connections = layoutData.connections.map(conn => ({
+                source: nameToIndex[conn.sourceName],
+                target: nameToIndex[conn.targetName],
+                direction: conn.direction,
+                useRect: conn.useRect,
+                rectPos: conn.rectPos
+            }));
 
             state.dragging = null;
             state.resizing = null;

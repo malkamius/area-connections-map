@@ -50,20 +50,24 @@ function getDirectionVector(direction) {
     }
 }
 
-function findDirectionalConnections(areas) {
+function findDirectionalConnections(areasDict) {
     const connections = [];
-    areas.forEach((sourceArea, sourceAreaIndex) => {
-        // Iterate over rooms dictionary instead of array
+    const areaNames = Object.keys(areasDict);
+    
+    areaNames.forEach((sourceAreaName) => {
+        const sourceArea = areasDict[sourceAreaName];
         Object.entries(sourceArea.rooms).forEach(([roomId, room]) => {
             Object.entries(room.exits).forEach(([direction, targetId]) => {
                 if (targetId) {
-                    const targetAreaIndex = areas.findIndex(targetArea => 
-                        Object.keys(targetArea.rooms).includes(targetId.toString())
+                    // Find which area contains the target room
+                    const targetAreaName = areaNames.find(areaName => 
+                        Object.keys(areasDict[areaName].rooms).includes(targetId.toString())
                     );
-                    if (targetAreaIndex !== -1 && sourceAreaIndex !== targetAreaIndex) {
+                    
+                    if (targetAreaName && targetAreaName !== sourceAreaName) {
                         connections.push({
-                            source: sourceAreaIndex,
-                            target: targetAreaIndex,
+                            source: sourceAreaName,
+                            target: targetAreaName,
                             direction: direction
                         });
                     }
@@ -82,13 +86,14 @@ function findDirectionalConnections(areas) {
 }
 
 class ForceDirectedGraph {
-    constructor(areas, connections, width, height) {
+    constructor(areasDict, connections, width, height) {
         this.width = width;
         this.height = height;
         
-        // Initialize areas with random positions, calculate size based on number of rooms
-        this.areas = areas.map(area => ({
+        // Convert dictionary to array with additional properties
+        this.areas = Object.entries(areasDict).map(([name, area]) => ({
             ...area,
+            name,
             size: 30 + 30 * Math.max(0, Math.min(1, 1 - (100 / Object.keys(area.rooms).length))),
             pos: new Vector(
                 width/2 + (Math.random() - 0.5) * width/4,
@@ -97,7 +102,13 @@ class ForceDirectedGraph {
             velocity: new Vector(0, 0),
             force: new Vector(0, 0)
         }));
-        this.connections = connections;
+        
+        // Convert connections to use array indices
+        this.connections = connections.map(conn => ({
+            source: this.areas.findIndex(a => a.name === conn.source),
+            target: this.areas.findIndex(a => a.name === conn.target),
+            direction: conn.direction
+        })).filter(conn => conn.source !== -1 && conn.target !== -1);
     }
 
     applyForces() {
@@ -171,16 +182,12 @@ class ForceDirectedGraph {
 function generateHTML(areasData) {
     const width = 5000;
     const height = 5000;
-    const areas = areasData.areas.map(area => ({
-        ...area,
-        size: 30 + 30 * Math.max(0, Math.min(1, 1 - (100 / Object.keys(area.rooms).length)))
-    }));
     
-    console.log('Processing areas:', areas.length);
-    const connections = findDirectionalConnections(areas);
+    console.log('Processing areas:', Object.keys(areasData.areas).length);
+    const connections = findDirectionalConnections(areasData.areas);
     console.log('Found connections:', connections.length);
     
-    const graph = new ForceDirectedGraph(areas, connections, width, height);
+    const graph = new ForceDirectedGraph(areasData.areas, connections, width, height);
     const layoutedAreas = graph.simulate();
 
     // Generate SVG content
@@ -199,27 +206,27 @@ function generateHTML(areasData) {
                 </marker>
             </defs>
             
-            ${connections.map((conn, index) => {
-                const source = layoutedAreas[conn.source];
-                const target = layoutedAreas[conn.target];
-                if (!source?.pos || !target?.pos) return '';
+            ${connections.map((conn) => {
+                const sourceArea = layoutedAreas.find(a => a.name === conn.source);
+                const targetArea = layoutedAreas.find(a => a.name === conn.target);
+                if (!sourceArea?.pos || !targetArea?.pos) return '';
                 
                 const isBidirectional = connections.some(c => 
                     c.source === conn.target && c.target === conn.source
                 );
 
-                const dx = target.pos.x - source.pos.x;
-                const dy = target.pos.y - source.pos.y;
+                const dx = targetArea.pos.x - sourceArea.pos.x;
+                const dy = targetArea.pos.y - sourceArea.pos.y;
                 const distance = Math.sqrt(dx * dx + dy * dy);
                 if (!Number.isFinite(distance)) return '';
 
-                const midX = (source.pos.x + target.pos.x) / 2;
-                const midY = (source.pos.y + target.pos.y) / 2;
+                const midX = (sourceArea.pos.x + targetArea.pos.x) / 2;
+                const midY = (sourceArea.pos.y + targetArea.pos.y) / 2;
                 const normalX = distance ? (-dy / distance * 50) : 0;
                 const normalY = distance ? (dx / distance * 50) : 0;
 
-                const path1 = `M ${source.pos.x} ${source.pos.y} Q ${midX + normalX} ${midY + normalY} ${target.pos.x} ${target.pos.y}`;
-                const path2 = `M ${target.pos.x} ${target.pos.y} Q ${midX - normalX} ${midY - normalY} ${source.pos.x} ${source.pos.y}`;
+                const path1 = `M ${sourceArea.pos.x} ${sourceArea.pos.y} Q ${midX + normalX} ${midY + normalY} ${targetArea.pos.x} ${targetArea.pos.y}`;
+                const path2 = `M ${targetArea.pos.x} ${targetArea.pos.y} Q ${midX - normalX} ${midY - normalY} ${sourceArea.pos.x} ${sourceArea.pos.y}`;
 
                 return `
                     <path 
@@ -241,7 +248,7 @@ function generateHTML(areasData) {
                 `;
             }).join('\n')}
             
-            ${layoutedAreas.map((area, index) => `
+            ${layoutedAreas.map((area) => `
                 <g>
                     <circle 
                         cx="${area.pos.x}" 
