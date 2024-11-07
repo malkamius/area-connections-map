@@ -65,7 +65,7 @@
             align-items: center;
             flex-wrap: wrap;
         }
-        
+
         .control-group {
             display: flex;
             gap: 10px;
@@ -73,21 +73,6 @@
         }
         .control-group label {
             white-space: nowrap;
-        }
-        .area-circle {
-            cursor: move;
-            transition: fill 0.2s;
-        }
-        .area-circle:hover {
-            fill: #cbd5e1;
-        }
-        .area-circle.selected {
-            fill: #bfdbfe;
-            stroke: #3b82f6;
-        }
-        .area-text {
-            pointer-events: none;
-            user-select: none;
         }
         
         #map-container {
@@ -163,6 +148,79 @@
         svg:active {
             cursor: grabbing;
         }
+        .area-circle {
+            cursor: move;
+            transition: fill 0.2s;
+            fill: #64748b;
+        }
+        .area-circle:hover {
+            fill: #cbd5e1;
+        }
+        .area-circle.selected {
+            fill: #bfdbfe;
+            stroke: #3b82f6;
+        }
+        .area-text {
+            pointer-events: none;
+            user-select: none;
+        }
+        .area-circle.has-overroom {
+            fill: #86efac; /* Light green for areas with overroom */
+        }
+        
+        .area-circle.modified-overroom {
+            fill: #fef08a; /* Light yellow for modified overroom */
+        }
+        
+        ..info-section {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+        }
+        
+        .info-section h3 {
+            margin: -10px -10px 10px -10px;
+            padding: 8px 10px;
+            background: #f8fafc;
+            border-bottom: 1px solid #e2e8f0;
+            border-radius: 4px 4px 0 0;
+            font-size: 0.9em;
+            color: #475569;
+        }
+        
+        .field-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+        
+        .field-group > div {
+            flex: 1;
+        }
+        
+        .info-section input[type="text"],
+        .info-section input[type="number"] {
+            width: 100%;
+            padding: 4px;
+            margin-bottom: 4px;
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+        
+        .info-section label {
+            display: block;
+            margin-bottom: 4px;
+            color: #475569;
+            font-size: 0.8em;
+            font-weight: 500;
+        }
+        
+        .read-only {
+            background-color: #f8fafc;
+            cursor: not-allowed;
+        }
     </style>
     
 </head>
@@ -206,10 +264,56 @@
         </div>
         <div id="info-panel" class="info-panel">
             <div class="card-title">Area Information</div>
+            
             <div class="info-section">
-                <h3>Name</h3>
-                <input type="text" id="area-name" style="width: 100%; padding: 4px;" />
+                <h3>Basic Information</h3>
+                <label for="area-name">Area Name:</label>
+                <input type="text" id="area-name" />
+                
+                <label for="area-credits">Credits:</label>
+                <input type="text" id="area-credits" />
             </div>
+            
+            <div class="info-section">
+                <h3>Level Range</h3>
+                <div class="field-group">
+                    <div>
+                        <label for="min-level">Minimum Level:</label>
+                        <input type="number" id="min-level" min="0" />
+                    </div>
+                    <div>
+                        <label for="max-level">Maximum Level:</label>
+                        <input type="number" id="max-level" min="0" />
+                    </div>
+                </div>
+            </div>
+            
+            <div class="info-section">
+                <h3>VNUM Range</h3>
+                <div class="field-group">
+                    <div>
+                        <label for="min-vnum">Minimum VNUM:</label>
+                        <input type="number" id="min-vnum" min="0" />
+                    </div>
+                    <div>
+                        <label for="max-vnum">Maximum VNUM:</label>
+                        <input type="number" id="max-vnum" min="0" />
+                    </div>
+                </div>
+            </div>
+            
+            <div class="info-section">
+                <h3>Overroom Information</h3>
+                <div class="field-group">
+                    <div>
+                        <label for="overroom-vnum">Overroom VNUM:</label>
+                        <input type="number" id="overroom-vnum" min="0" />
+                    </div>
+                </div>
+                <label for="overroom-name">Overroom Name:</label>
+                <input type="text" id="overroom-name" class="read-only" readonly />
+            </div>
+            
             <div class="info-section">
                 <h3>Connections</h3>
                 <ul id="connection-list" class="connection-list">
@@ -219,6 +323,7 @@
                     <button onclick="showAddConnectionDialog()">Add Connection</button>
                 </div>
             </div>
+            
             <div class="info-section">
                 <button class="delete-btn" onclick="deleteSelectedArea()">Delete Area</button>
             </div>
@@ -643,7 +748,15 @@
                     height/2 + (Math.random() - 0.5) * height/4
                 ),
                 velocity: new Vector(0, 0),
-                force: new Vector(0, 0)
+                force: new Vector(0, 0),
+                overroomvnum: area.overroomvnum || 0,
+                overroomname: area.overroomname || null,
+                overroomModified: false,
+                credits: area.credits || '',
+                minimumlevel: area.minimumlevel || 0,
+                maximumlevel: area.maximumlevel || 0,
+                minimumvnum: area.minimumvnum || 0,
+                maximumvnum: area.maximumvnum || 0
             }));
 
             // Find connections based on dictionary structure
@@ -750,10 +863,17 @@
         function saveLayout() {
             // Convert array-based state to dictionary format for saving
             const areasDict = {};
-            state.areas.forEach((area, index) => {
+            state.areas.forEach((area) => {
                 areasDict[area.name] = {
                     position: { x: area.pos.x, y: area.pos.y },
-                    size: area.size
+                    size: area.size,
+                    overroomvnum: area.overroomvnum,
+                    overroomname: area.overroomname,
+                    credits: area.credits,
+                    minimumlevel: area.minimumlevel,
+                    maximumlevel: area.maximumlevel,
+                    minimumvnum: area.minimumvnum,
+                    maximumvnum: area.maximumvnum
                 };
             });
 
@@ -787,7 +907,15 @@
                 pos: new Vector(data.position.x, data.position.y),
                 size: data.size,
                 velocity: new Vector(0, 0),
-                force: new Vector(0, 0)
+                force: new Vector(0, 0),
+                overroomvnum: data.overroomvnum || 0,
+                overroomname: data.overroomname || null,
+                overroomModified: false,
+                credits: data.credits || '',
+                minimumlevel: data.minimumlevel || 0,
+                maximumlevel: data.maximumlevel || 0,
+                minimumvnum: data.minimumvnum || 0,
+                maximumvnum: data.maximumvnum || 0
             }));
 
             // Create a name to index mapping for connection conversion
@@ -877,10 +1005,22 @@
                 circle.setAttribute("cx", area.pos.x);
                 circle.setAttribute("cy", area.pos.y);
                 circle.setAttribute("r", area.size);
-                circle.setAttribute("fill", "#e2e8f0");
+                
+                // Determine circle class based on overroom status
+                let circleClass = 'area-circle';
+                if (area.overroomname) {
+                    circleClass += ' has-overroom';
+                }
+                if (area.overroomModified) {
+                    circleClass += ' modified-overroom';
+                }
+                if (state.selection.selectedAreas.has(index)) {
+                    circleClass += ' selected';
+                }
+                
+                circle.setAttribute("class", circleClass);
                 circle.setAttribute("stroke", "#64748b");
                 circle.setAttribute("stroke-width", "2");
-                circle.setAttribute("class", `area-circle${state.selection.selectedAreas.has(index) ? ' selected' : ''}`);
                 circle.onmousedown = (e) => startDrag(e, index);
                 g.appendChild(circle);
 
@@ -937,6 +1077,8 @@
         function updateInfoPanel() {
             const panel = document.getElementById('info-panel');
             const nameInput = document.getElementById('area-name');
+            const overroomVnumInput = document.getElementById('overroom-vnum');
+            const overroomNameInput = document.getElementById('overroom-name');
             const connectionList = document.getElementById('connection-list');
             
             if (state.selection.selectedAreas.size === 1) {
@@ -951,6 +1093,51 @@
                     updateMap();
                 };
                 
+                // Update overroom information
+                overroomVnumInput.value = area.overroomvnum || '';
+                overroomNameInput.value = area.overroomname || '';
+                
+                overroomVnumInput.onchange = (e) => {
+                    const newVnum = parseInt(e.target.value) || 0;
+                    if (newVnum !== area.overroomvnum) {
+                        area.overroomvnum = newVnum;
+                        area.overroomModified = true;
+                        updateMap();
+                    }
+                };
+                document.getElementById('area-credits').value = area.credits || '';
+                document.getElementById('min-level').value = area.minimumlevel || 0;
+                document.getElementById('max-level').value = area.maximumlevel || 0;
+                document.getElementById('min-vnum').value = area.minimumvnum || 0;
+                document.getElementById('max-vnum').value = area.maximumvnum || 0;
+                document.getElementById('overroom-vnum').value = area.overroomvnum || 0;
+                document.getElementById('overroom-name').value = area.overroomname || '';
+
+                document.getElementById('area-credits').onchange = (e) => {
+                    area.credits = e.target.value;
+                    updateMap();
+                };
+                
+                document.getElementById('min-level').onchange = (e) => {
+                    area.minimumlevel = parseInt(e.target.value) || 0;
+                    updateMap();
+                };
+                
+                document.getElementById('max-level').onchange = (e) => {
+                    area.maximumlevel = parseInt(e.target.value) || 0;
+                    updateMap();
+                };
+                
+                document.getElementById('min-vnum').onchange = (e) => {
+                    area.minimumvnum = parseInt(e.target.value) || 0;
+                    updateMap();
+                };
+                
+                document.getElementById('max-vnum').onchange = (e) => {
+                    area.maximumvnum = parseInt(e.target.value) || 0;
+                    updateMap();
+                };
+
                 // Update connections list
                 connectionList.innerHTML = '';
                 state.connections

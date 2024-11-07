@@ -1,0 +1,3410 @@
+{
+  "areas": {
+    "Castle of Trials": {
+      "position": {
+        "x": 785.2617189147236,
+        "y": 652.1284077385303
+      },
+      "size": 44.848484848484844,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Lichen Castle of Trials",
+      "minimumlevel": 5,
+      "maximumlevel": 35,
+      "minimumvnum": 18200,
+      "maximumvnum": 18400
+    },
+    "Beholder Corps": {
+      "position": {
+        "x": 1344.3065743153775,
+        "y": 341.99300950222687
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Ceran  Beholder Corps",
+      "minimumlevel": 30,
+      "maximumlevel": 51,
+      "minimumvnum": 17700,
+      "maximumvnum": 17789
+    },
+    "Arachnos": {
+      "position": {
+        "x": 853.8086464355943,
+        "y": 937.7388128221542
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Mahatma Arachnos",
+      "minimumlevel": 5,
+      "maximumlevel": 20,
+      "minimumvnum": 6200,
+      "maximumvnum": 6399
+    },
+    "Visham": {
+      "position": {
+        "x": 1318.465945328057,
+        "y": 429.2599528152605
+      },
+      "size": 35.40983606557377,
+      "overroomvnum": 101024,
+      "overroomname": "The sky above Visham",
+      "credits": "Visham City by Tholos",
+      "minimumlevel": 1,
+      "maximumlevel": 51,
+      "minimumvnum": 40000,
+      "maximumvnum": 40199
+    },
+    "Agape": {
+      "position": {
+        "x": 3655.743390144525,
+        "y": 214.80906452188265
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "",
+      "minimumlevel": 1,
+      "maximumlevel": 51,
+      "minimumvnum": 111,
+      "maximumvnum": 199
+    },
+    "Arkham Swamps": {
+      "position": {
+        "x": 3078.2296958545517,
+        "y": 970.8779832439213
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Ceran   Arkham Swamps",
+      "minimumlevel": 15,
+      "maximumlevel": 25,
+      "minimumvnum": 29400,
+      "maximumvnum": 29470
+    },
+    "Castle of Giants": {
+      "position": {
+        "x": 1800.8712224482265,
+        "y": 833.9670786815655
+      },
+      "size": 30,
+      "overroomvnum": 101030,
+      "overroomname": "The sky above the Shadowlands",
+      "credits": "Barsak  Castle of Giants",
+      "minimumlevel": 20,
+      "maximumlevel": 50,
+      "minimumvnum": 13000,
+      "maximumvnum": 13099
+    },
+    "Avalon": {
+      "position": {
+        "x": 3087.296005782568,
+        "y": 463.5081790975414
+      },
+      "size": 30,
+      "overroomvnum": 101038,
+      "overroomname": "The sky above Avalon",
+      "credits": "Chipper Avalon",
+      "minimumlevel": 25,
+      "maximumlevel": 45,
+      "minimumvnum": 21000,
+      "maximumvnum": 21099
+    },
+    "Blight": {
+      "position": {
+        "x": 925.6424020939744,
+        "y": 250.37928383464123
+      },
+      "size": 46.04651162790698,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Stile   Blight",
+      "minimumlevel": 35,
+      "maximumlevel": 50,
+      "minimumvnum": 15001,
+      "maximumvnum": 16099
+    },
+    "Astoria": {
+      "position": {
+        "x": 1160.767531294929,
+        "y": 967.2849233727952
+      },
+      "size": 33.451327433628315,
+      "overroomvnum": 101000,
+      "overroomname": "The Sky Above Astoria",
+      "credits": "Astoria",
+      "minimumlevel": 1,
+      "maximumlevel": 51,
+      "minimumvnum": 19000,
+      "maximumvnum": 19499
+    },
+    "Arkham": {
+      "position": {
+        "x": 2824.0124425473405,
+        "y": 955.3602743207289
+      },
+      "size": 41.70731707317073,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Lillith Arkham",
+      "minimumlevel": 15,
+      "maximumlevel": 51,
+      "minimumvnum": 700,
+      "maximumvnum": 899
+    },
+    "Arkham legion": {
+      "position": {
+        "x": 3073.679264372135,
+        "y": 1135.1386958052171
+      },
+      "size": 47.85425101214575,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Ceran   Arkham Legion",
+      "minimumlevel": 30,
+      "maximumlevel": 51,
+      "minimumvnum": 29500,
+      "maximumvnum": 29899
+    },
+    "Catacombs": {
+      "position": {
+        "x": 2031.633487960854,
+        "y": 719.4464433088187
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Raff    Dwarven Catacombs",
+      "minimumlevel": 10,
+      "maximumlevel": 20,
+      "minimumvnum": 2000,
+      "maximumvnum": 2099
+    },
+    "Calinth": {
+      "position": {
+        "x": 3318.500839265331,
+        "y": 102.02080692346362
+      },
+      "size": 50.963855421686745,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Jholland Calinth",
+      "minimumlevel": 5,
+      "maximumlevel": 35,
+      "minimumvnum": 20000,
+      "maximumvnum": 20399
+    },
+    "Celestial Area": {
+      "position": {
+        "x": 1262.9611903130822,
+        "y": 247.20352888761363
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Deomanix Celestial Area",
+      "minimumlevel": 31,
+      "maximumlevel": 51,
+      "minimumvnum": 10100,
+      "maximumvnum": 10199
+    },
+    "Chapel": {
+      "position": {
+        "x": 2796.559985704089,
+        "y": 177.48048033690384
+      },
+      "size": 30,
+      "overroomvnum": 1,
+      "overroomname": "The Void",
+      "credits": "Copper  Chapel Catacombs",
+      "minimumlevel": 15,
+      "maximumlevel": 25,
+      "minimumvnum": 3400,
+      "maximumvnum": 3499
+    },
+    "Ciquala's Lair": {
+      "position": {
+        "x": 1722.5175395262286,
+        "y": 1294.2215990036912
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Binky   Ciquala's Lair",
+      "minimumlevel": 40,
+      "maximumlevel": 52,
+      "minimumvnum": 13400,
+      "maximumvnum": 13499
+    },
+    "Cliffs of Kylos": {
+      "position": {
+        "x": 1295.7094511800105,
+        "y": 572.2858240869823
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Kylos          Cliffs of Kylos",
+      "minimumlevel": 1,
+      "maximumlevel": 51,
+      "minimumvnum": 30400,
+      "maximumvnum": 30599
+    },
+    "Dark Forest": {
+      "position": {
+        "x": 1499.779342551407,
+        "y": 1155.2418353970927
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Kraenesk Dark Forest",
+      "minimumlevel": 51,
+      "maximumlevel": 1,
+      "minimumvnum": 11000,
+      "maximumvnum": 11099
+    },
+    "Crusader Battlefield": {
+      "position": {
+        "x": 1041.325057825447,
+        "y": 328.03559010573326
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Dioxide Battlefield",
+      "minimumlevel": 51,
+      "maximumlevel": 51,
+      "minimumvnum": 23100,
+      "maximumvnum": 23199
+    },
+    "Dwarvven Day Care": {
+      "position": {
+        "x": 3795.6510200352677,
+        "y": 137.39930157192975
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Sandman Dwarven Day Care",
+      "minimumlevel": 1,
+      "maximumlevel": 5,
+      "minimumvnum": 6600,
+      "maximumvnum": 6699
+    },
+    "Dargaard Keep": {
+      "position": {
+        "x": 1573.8924274245674,
+        "y": 1214.5323888149726
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Mishakal Dargaard Keep",
+      "minimumlevel": 30,
+      "maximumlevel": 35,
+      "minimumvnum": 16100,
+      "maximumvnum": 16199
+    },
+    "Drothuun's Tower": {
+      "position": {
+        "x": 3432.6496274948627,
+        "y": 252.16710620842332
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Tinesthia      Drothuun's Peak",
+      "minimumlevel": 1,
+      "maximumlevel": 51,
+      "minimumvnum": 30600,
+      "maximumvnum": 30799
+    },
+    "Dead Forest": {
+      "position": {
+        "x": 1366.150044595805,
+        "y": 656.37516180073
+      },
+      "size": 30,
+      "overroomvnum": 101016,
+      "overroomname": "The sky above the Dead Forest",
+      "credits": "Ceran   The Dead Forest",
+      "minimumlevel": 10,
+      "maximumlevel": 40,
+      "minimumvnum": 24200,
+      "maximumvnum": 24299
+    },
+    "Drow City": {
+      "position": {
+        "x": 1798.6584237489874,
+        "y": 1249.919918928791
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Drkside Drow City",
+      "minimumlevel": 15,
+      "maximumlevel": 25,
+      "minimumvnum": 5100,
+      "maximumvnum": 5199
+    },
+    "Dwarven Kingdom": {
+      "position": {
+        "x": 1912.70573377118,
+        "y": 722.7333916098396
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Anon    Dwarven Kingdom",
+      "minimumlevel": 10,
+      "maximumlevel": 25,
+      "minimumvnum": 6500,
+      "maximumvnum": 6599
+    },
+    "Destroyer's Hall": {
+      "position": {
+        "x": 3617.2975357690975,
+        "y": 477.00082642547295
+      },
+      "size": 50.415335463258785,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Lyug           Destroyer's Hall",
+      "minimumlevel": 1,
+      "maximumlevel": 51,
+      "minimumvnum": 31000,
+      "maximumvnum": 31999
+    },
+    "Drow Enclaves": {
+      "position": {
+        "x": 1079.1379623083185,
+        "y": 1394.556250544018
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Ceran   Drannor, Drow Enclaves",
+      "minimumlevel": 30,
+      "maximumlevel": 51,
+      "minimumvnum": 18100,
+      "maximumvnum": 18199
+    },
+    "Dylan's Area": {
+      "position": {
+        "x": 2486.2436037840757,
+        "y": 452.88622636224636
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Dylan   Dylan's Area",
+      "minimumlevel": 15,
+      "maximumlevel": 25,
+      "minimumvnum": 9100,
+      "maximumvnum": 9199
+    },
+    "Dying Forest.are": {
+      "position": {
+        "x": 1234.6848657599985,
+        "y": 810.0298391135793
+      },
+      "size": 30,
+      "overroomvnum": 101025,
+      "overroomname": "The sky above the Dying Forest",
+      "credits": "Ceran   Dying Forest",
+      "minimumlevel": 25,
+      "maximumlevel": 51,
+      "minimumvnum": 24300,
+      "maximumvnum": 24399
+    },
+    "Eastern Road": {
+      "position": {
+        "x": 1569.26406990118,
+        "y": 976.5267780283571
+      },
+      "size": 35.609756097560975,
+      "overroomvnum": 101012,
+      "overroomname": "The Sky above the Large Crossroads",
+      "credits": "",
+      "minimumlevel": 0,
+      "maximumlevel": 1,
+      "minimumvnum": 19600,
+      "maximumvnum": 19799
+    },
+    "Eastern Shatar Road": {
+      "position": {
+        "x": 1360.1531119280194,
+        "y": 761.9320201976639
+      },
+      "size": 30,
+      "overroomvnum": 101015,
+      "overroomname": "The are above the Eastern Shatar Road",
+      "credits": "",
+      "minimumlevel": 0,
+      "maximumlevel": 1,
+      "minimumvnum": 40900,
+      "maximumvnum": 50099
+    },
+    "Encampment of the Trium": {
+      "position": {
+        "x": 3412.4330009350824,
+        "y": -521.4227585998124
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Okiju          The Encampment",
+      "minimumlevel": 1,
+      "maximumlevel": 51,
+      "minimumvnum": 30200,
+      "maximumvnum": 30399
+    },
+    "Elemental Temple": {
+      "position": {
+        "x": 152.67911518805658,
+        "y": 1192.1947944970057
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Amlaruil Elemental Temple",
+      "minimumlevel": 35,
+      "maximumlevel": 51,
+      "minimumvnum": 13100,
+      "maximumvnum": 13199
+    },
+    "Forest Road": {
+      "position": {
+        "x": 905.0453857555253,
+        "y": 1116.2930645051852
+      },
+      "size": 30,
+      "overroomvnum": 101004,
+      "overroomname": "The air above the Forest Road",
+      "credits": "",
+      "minimumlevel": 0,
+      "maximumlevel": 1,
+      "minimumvnum": 50900,
+      "maximumvnum": 50999
+    },
+    "Goblin Village": {
+      "position": {
+        "x": 1237.394793987482,
+        "y": 1298.324642099693
+      },
+      "size": 30,
+      "overroomvnum": 20700,
+      "overroomname": "The air above Goblin Village.",
+      "credits": "",
+      "minimumlevel": 0,
+      "maximumlevel": 1,
+      "minimumvnum": 50400,
+      "maximumvnum": 50599
+    },
+    "Galaxy": {
+      "position": {
+        "x": 463.0260520161214,
+        "y": 1051.1685674943897
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Doctor  Galaxy",
+      "minimumlevel": 20,
+      "maximumlevel": 30,
+      "minimumvnum": 9300,
+      "maximumvnum": 9399
+    },
+    "Graveyard": {
+      "position": {
+        "x": 2802.7270255868293,
+        "y": 339.7395379335426
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Alfa    Graveyard",
+      "minimumlevel": 5,
+      "maximumlevel": 10,
+      "minimumvnum": 3600,
+      "maximumvnum": 3699
+    },
+    "Forest of Myth Drannor": {
+      "position": {
+        "x": 2039.4048967038525,
+        "y": 385.14056051254784
+      },
+      "size": 30,
+      "overroomvnum": 101035,
+      "overroomname": "The sky above Forest of Drannor",
+      "credits": "Ceran   Forest of Drannor",
+      "minimumlevel": 20,
+      "maximumlevel": 40,
+      "minimumvnum": 22500,
+      "maximumvnum": 22599
+    },
+    "Gangland": {
+      "position": {
+        "x": 799.5199892160522,
+        "y": 400.3757079583693
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Raff    Dangerous Neighborhood",
+      "minimumlevel": 5,
+      "maximumlevel": 15,
+      "minimumvnum": 2100,
+      "maximumvnum": 2199
+    },
+    "Evil's Abode": {
+      "position": {
+        "x": 2435.938614867758,
+        "y": 1127.7266087339017
+      },
+      "size": 30,
+      "overroomvnum": 101033,
+      "overroomname": "The sky above Evil's Abode",
+      "credits": "Adiehi Evil's Abode",
+      "minimumlevel": 45,
+      "maximumlevel": 51,
+      "minimumvnum": 7600,
+      "maximumvnum": 7694
+    },
+    "Emerald Forest": {
+      "position": {
+        "x": 1006.0051973375239,
+        "y": 1235.1142871366687
+      },
+      "size": 30,
+      "overroomvnum": 101003,
+      "overroomname": "The air above Emerald Forest.",
+      "credits": "FeaR    Emerald Forest",
+      "minimumlevel": 15,
+      "maximumlevel": 1,
+      "minimumvnum": 20600,
+      "maximumvnum": 20699
+    },
+    "Giant Village": {
+      "position": {
+        "x": 2956.3180753627653,
+        "y": 743.767330857273
+      },
+      "size": 30,
+      "overroomvnum": 101040,
+      "overroomname": "The sky above the Giant Village",
+      "credits": "Amlaruil Giant Village",
+      "minimumlevel": 25,
+      "maximumlevel": 51,
+      "minimumvnum": 13200,
+      "maximumvnum": 13299
+    },
+    "Lich Tower": {
+      "position": {
+        "x": 2152.181390480792,
+        "y": 891.1327636723131
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Someone   Lich Tower",
+      "minimumlevel": 51,
+      "maximumlevel": 51,
+      "minimumvnum": 29300,
+      "maximumvnum": 29399
+    },
+    "Haon Dor": {
+      "position": {
+        "x": 1002.8600488249326,
+        "y": 977.0757739328847
+      },
+      "size": 32.72727272727273,
+      "overroomvnum": 101008,
+      "overroomname": "The air above Haon Dor.",
+      "credits": "Diku    Haon Dor",
+      "minimumlevel": 5,
+      "maximumlevel": 10,
+      "minimumvnum": 51400,
+      "maximumvnum": 51799
+    },
+    "Kobold Warren": {
+      "position": {
+        "x": 1050.8714394362582,
+        "y": 878.6035575046576
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "",
+      "minimumlevel": 0,
+      "maximumlevel": 1,
+      "minimumvnum": 50200,
+      "maximumvnum": 50399
+    },
+    "Machine Dreams": {
+      "position": {
+        "x": 2504.4964604608135,
+        "y": 545.0840625005417
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Furey   Machine Dreams",
+      "minimumlevel": 1,
+      "maximumlevel": 5,
+      "minimumvnum": 8600,
+      "maximumvnum": 8699
+    },
+    "Hell": {
+      "position": {
+        "x": 1601.5619463067378,
+        "y": 1291.9183190590682
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Kyrissaean Hell",
+      "minimumlevel": 40,
+      "maximumlevel": 51,
+      "minimumvnum": 27000,
+      "maximumvnum": 27099
+    },
+    "Marsh": {
+      "position": {
+        "x": 918.3798059878707,
+        "y": 829.4524235663957
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Generic Old Marsh",
+      "minimumlevel": 15,
+      "maximumlevel": 25,
+      "minimumvnum": 8300,
+      "maximumvnum": 8399
+    },
+    "Mausoleum": {
+      "position": {
+        "x": 2564.7981291326164,
+        "y": 1098.241463563575
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Khargqwzxdds Mausoleum",
+      "minimumlevel": 25,
+      "maximumlevel": 51,
+      "minimumvnum": 4600,
+      "maximumvnum": 4699
+    },
+    "Miden'nir": {
+      "position": {
+        "x": 1157.3315995057114,
+        "y": 1228.0258924716195
+      },
+      "size": 30,
+      "overroomvnum": 101001,
+      "overroomname": "The air above Miden'nir.",
+      "credits": "Copper  Miden'nir",
+      "minimumlevel": 5,
+      "maximumlevel": 15,
+      "minimumvnum": 40500,
+      "maximumvnum": 40699
+    },
+    "High Tower": {
+      "position": {
+        "x": 244.0946698525695,
+        "y": 1108.7054835711515
+      },
+      "size": 43.60655737704918,
+      "overroomvnum": 101009,
+      "overroomname": "The air above the Shadow Grove.",
+      "credits": "Skylar  High Tower of Sorcery",
+      "minimumlevel": 10,
+      "maximumlevel": 30,
+      "minimumvnum": 1300,
+      "maximumvnum": 1499
+    },
+    "Mad Man": {
+      "position": {
+        "x": 2014.909041331558,
+        "y": 1127.27660440516
+      },
+      "size": 44.61538461538461,
+      "overroomvnum": 101036,
+      "overroomname": "The sky above the Mad Man",
+      "credits": "Lichen  Mad Man",
+      "minimumlevel": 5,
+      "maximumlevel": 35,
+      "minimumvnum": 11100,
+      "maximumvnum": 11299
+    },
+    "mud school": {
+      "position": {
+        "x": 1230.5976785695184,
+        "y": 899.8021740334525
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Hatchet Mud School",
+      "minimumlevel": 1,
+      "maximumlevel": 5,
+      "minimumvnum": 3700,
+      "maximumvnum": 3899
+    },
+    "Mahn-Tor": {
+      "position": {
+        "x": 1691.3228121961233,
+        "y": 1173.095705298152
+      },
+      "size": 30,
+      "overroomvnum": 101029,
+      "overroomname": "The sky above Mahn-Tor",
+      "credits": "Chris   The Keep of Mahn-Tor",
+      "minimumlevel": 5,
+      "maximumlevel": 35,
+      "minimumvnum": 2300,
+      "maximumvnum": 2399
+    },
+    "Moria": {
+      "position": {
+        "x": 2779.079965891026,
+        "y": 526.1271530608751
+      },
+      "size": 35.20661157024793,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Alfa    Moria",
+      "minimumlevel": 5,
+      "maximumlevel": 15,
+      "minimumvnum": 3900,
+      "maximumvnum": 4199
+    },
+    "Nhalijah, the Astral Prison": {
+      "position": {
+        "x": 3726.549238551813,
+        "y": -389.69108322223883
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Mephistilis  Nhalijah, the Astral Prison",
+      "minimumlevel": 52,
+      "maximumlevel": 60,
+      "minimumvnum": 28200,
+      "maximumvnum": 28250
+    },
+    "Naiadia": {
+      "position": {
+        "x": 545.405544418963,
+        "y": 1187.5222101287236
+      },
+      "size": 36.37795275590551,
+      "overroomvnum": 101006,
+      "overroomname": "The air above Naiadia.",
+      "credits": "Kyrissaean Naiadia",
+      "minimumlevel": 1,
+      "maximumlevel": 25,
+      "minimumvnum": 20400,
+      "maximumvnum": 20599
+    },
+    "New Ofcol": {
+      "position": {
+        "x": 1264.6700888438445,
+        "y": 377.3792561165178
+      },
+      "size": 30,
+      "overroomvnum": 101017,
+      "overroomname": "The sky above New Ofcol",
+      "credits": "Hatchet New Ofcol",
+      "minimumlevel": 5,
+      "maximumlevel": 35,
+      "minimumvnum": 600,
+      "maximumvnum": 699
+    },
+    "Nirvana": {
+      "position": {
+        "x": 1431.5207381901919,
+        "y": 611.3797008186834
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Fstall  Nirvana",
+      "minimumlevel": 30,
+      "maximumlevel": 35,
+      "minimumvnum": 9000,
+      "maximumvnum": 9099
+    },
+    "Neraka": {
+      "position": {
+        "x": 452.7189963655851,
+        "y": 1221.9105073655273
+      },
+      "size": 51.89189189189189,
+      "overroomvnum": 101007,
+      "overroomname": "The air above Neraka",
+      "credits": "Mishakal   Neraka",
+      "minimumlevel": 30,
+      "maximumlevel": 35,
+      "minimumvnum": 21600,
+      "maximumvnum": 21999
+    },
+    "Midgaard": {
+      "position": {
+        "x": 2654.6125402911994,
+        "y": 452.3700703932104
+      },
+      "size": 41.25,
+      "overroomvnum": 101039,
+      "overroomname": "The skys above Midgaard",
+      "credits": "Diku    Midgaard",
+      "minimumlevel": 1,
+      "maximumlevel": 51,
+      "minimumvnum": 3000,
+      "maximumvnum": 3399
+    },
+    "Ofcol": {
+      "position": {
+        "x": 1231.9995819730898,
+        "y": 410.5382233939504
+      },
+      "size": 30,
+      "overroomvnum": 101020,
+      "overroomname": "The sky above New Ofcol",
+      "credits": "Alfa    Ofcol",
+      "minimumlevel": 1,
+      "maximumlevel": 51,
+      "minimumvnum": 5500,
+      "maximumvnum": 5599
+    },
+    "Orduno's Forge": {
+      "position": {
+        "x": 3360.931228233443,
+        "y": 472.6927237419836
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Orduno    The Forge of Orduno",
+      "minimumlevel": 1,
+      "maximumlevel": 51,
+      "minimumvnum": 25500,
+      "maximumvnum": 25599
+    },
+    "New Thalos": {
+      "position": {
+        "x": 2010.674441847425,
+        "y": 976.9043876068445
+      },
+      "size": 51.30434782608695,
+      "overroomvnum": 101031,
+      "overroomname": "The sky above New Thalos",
+      "credits": "Conner  New Thalos",
+      "minimumlevel": 10,
+      "maximumlevel": 35,
+      "minimumvnum": 9500,
+      "maximumvnum": 9899
+    },
+    "Quifael's": {
+      "position": {
+        "x": 2705.524142290031,
+        "y": 316.61348391249294
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Quifael Quifael's Area",
+      "minimumlevel": 31,
+      "maximumlevel": 35,
+      "minimumvnum": 6900,
+      "maximumvnum": 6999
+    },
+    "Plains": {
+      "position": {
+        "x": 1101.5694093312131,
+        "y": 524.5579335201305
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Copper  Plains of the North",
+      "minimumlevel": 1,
+      "maximumlevel": 20,
+      "minimumvnum": 300,
+      "maximumvnum": 399
+    },
+    "Rakshasa Tower": {
+      "position": {
+        "x": 1835.0179386308064,
+        "y": 482.40083925267345
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Ceran   Drannor, Rakshasa Domain",
+      "minimumlevel": 30,
+      "maximumlevel": 51,
+      "minimumvnum": 13900,
+      "maximumvnum": 13998
+    },
+    "Outskirts of Astoria": {
+      "position": {
+        "x": 1203.310162497402,
+        "y": 991.9997956134653
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "",
+      "minimumlevel": 0,
+      "maximumlevel": 1,
+      "minimumvnum": 19500,
+      "maximumvnum": 19599
+    },
+    "Rivenrock Canyon": {
+      "position": {
+        "x": 1482.412382611291,
+        "y": 1073.5097458124606
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Kyrissaean Rivenrock Canyon",
+      "minimumlevel": 5,
+      "maximumlevel": 35,
+      "minimumvnum": 12300,
+      "maximumvnum": 12399
+    },
+    "Pyramid": {
+      "position": {
+        "x": 1613.160371035588,
+        "y": 1142.2378784280704
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Andersen The Great Pyramid",
+      "minimumlevel": 5,
+      "maximumlevel": 50,
+      "minimumvnum": 8700,
+      "maximumvnum": 8799
+    },
+    "Ruined Keep": {
+      "position": {
+        "x": 906.7557658950839,
+        "y": 1235.1106605969194
+      },
+      "size": 30,
+      "overroomvnum": 101005,
+      "overroomname": "The air above the Ruined Keep.",
+      "credits": "",
+      "minimumlevel": 0,
+      "maximumlevel": 1,
+      "minimumvnum": 51000,
+      "maximumvnum": 51199
+    },
+    "Sands of Sorrow": {
+      "position": {
+        "x": 1567.821501858392,
+        "y": 1070.7393584567203
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Anon    Sands of Sorrow",
+      "minimumlevel": 10,
+      "maximumlevel": 20,
+      "minimumvnum": 5000,
+      "maximumvnum": 5099
+    },
+    "Ruins of Drannor": {
+      "position": {
+        "x": 1894.890845425095,
+        "y": 292.9161842042877
+      },
+      "size": 43.78378378378378,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Ceran   Ruins of Myth Drannor",
+      "minimumlevel": 30,
+      "maximumlevel": 51,
+      "minimumvnum": 13700,
+      "maximumvnum": 13899
+    },
+    "Ramadahn": {
+      "position": {
+        "x": 1776.6619244556896,
+        "y": 722.6537885456692
+      },
+      "size": 47.5,
+      "overroomvnum": 101027,
+      "overroomname": "The sky above Ramadah",
+      "credits": "Deomanix Ramadahn",
+      "minimumlevel": 1,
+      "maximumlevel": 51,
+      "minimumvnum": 28500,
+      "maximumvnum": 28750
+    },
+    "Summer Road": {
+      "position": {
+        "x": 1457.1682935413637,
+        "y": 847.7534033083398
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "",
+      "minimumlevel": 0,
+      "maximumlevel": 1,
+      "minimumvnum": 60600,
+      "maximumvnum": 60699
+    },
+    "Temple of the Fallen": {
+      "position": {
+        "x": 3520.3124209922526,
+        "y": -390.6811358384566
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Grikthoran  Temple of the Fallen",
+      "minimumlevel": 52,
+      "maximumlevel": 60,
+      "minimumvnum": 29900,
+      "maximumvnum": 29999
+    },
+    "Sewers": {
+      "position": {
+        "x": 1160.6680719436654,
+        "y": 1087.7227171477743
+      },
+      "size": 43.050847457627114,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Diku    Sewer",
+      "minimumlevel": 5,
+      "maximumlevel": 30,
+      "minimumvnum": 7000,
+      "maximumvnum": 7499
+    },
+    "Shire": {
+      "position": {
+        "x": 913.063739936204,
+        "y": 729.3038869426398
+      },
+      "size": 30,
+      "overroomvnum": 101022,
+      "overroomname": "The sky above the Shire",
+      "credits": "Poohb   The Shire",
+      "minimumlevel": 5,
+      "maximumlevel": 35,
+      "minimumvnum": 1100,
+      "maximumvnum": 1199
+    },
+    "The Blue Tower": {
+      "position": {
+        "x": 1822.346574667536,
+        "y": 381.7191211517661
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Ceran   Blue Tinged tower",
+      "minimumlevel": 35,
+      "maximumlevel": 51,
+      "minimumvnum": 23230,
+      "maximumvnum": 23259
+    },
+    "The Coliseum": {
+      "position": {
+        "x": 3368.0741010757215,
+        "y": 347.7708275359041
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Dioxide  The Coliseum",
+      "minimumlevel": 1,
+      "maximumlevel": 51,
+      "minimumvnum": 26000,
+      "maximumvnum": 26099
+    },
+    "Shadowlands": {
+      "position": {
+        "x": 2574.8332968763434,
+        "y": 709.2738512130704
+      },
+      "size": 49.16967509025271,
+      "overroomvnum": 101030,
+      "overroomname": "The sky above the Shadowlands",
+      "credits": "TheDark Nightfall Keep",
+      "minimumlevel": 35,
+      "maximumlevel": 51,
+      "minimumvnum": 14000,
+      "maximumvnum": 14299
+    },
+    "Thalos": {
+      "position": {
+        "x": 1865.8900320496573,
+        "y": 1214.669580485328
+      },
+      "size": 32.22222222222222,
+      "overroomvnum": 101028,
+      "overroomname": "The sky above the Dwarf Forest",
+      "credits": "Drkside Thalos",
+      "minimumlevel": 10,
+      "maximumlevel": 25,
+      "minimumvnum": 60700,
+      "maximumvnum": 60999
+    },
+    "Sywilm Woods": {
+      "position": {
+        "x": 890.9746192805865,
+        "y": 653.0301813738251
+      },
+      "size": 30,
+      "overroomvnum": 101021,
+      "overroomname": "The air above the Sywilm Woods",
+      "credits": "Deomanix Sywilm Woods",
+      "minimumlevel": 1,
+      "maximumlevel": 51,
+      "minimumvnum": 26100,
+      "maximumvnum": 26199
+    },
+    "Sky Peoples City": {
+      "position": {
+        "x": 1532.1971198454803,
+        "y": 76.54490063544426
+      },
+      "size": 42.35294117647059,
+      "overroomvnum": 101023,
+      "overroomname": "The air above the Sky Peoples City",
+      "credits": "",
+      "minimumlevel": 0,
+      "maximumlevel": 1,
+      "minimumvnum": 50600,
+      "maximumvnum": 50899
+    },
+    "Tarvalon": {
+      "position": {
+        "x": 1607.9060656875868,
+        "y": 752.8390270892764
+      },
+      "size": 45.91549295774648,
+      "overroomvnum": 101013,
+      "overroomname": "The air above Tar Valon",
+      "credits": "Galadri Tar Valon",
+      "minimumlevel": 1,
+      "maximumlevel": 51,
+      "minimumvnum": 1800,
+      "maximumvnum": 2000
+    },
+    "The Docks": {
+      "position": {
+        "x": 1172.9167540253916,
+        "y": 1024.3203661278726
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "",
+      "minimumlevel": 0,
+      "maximumlevel": 1,
+      "minimumvnum": 60000,
+      "maximumvnum": 60299
+    },
+    "The Dale": {
+      "position": {
+        "x": 2722.3925567870574,
+        "y": 656.6226635714834
+      },
+      "size": 39.45205479452055,
+      "overroomvnum": 101032,
+      "overroomname": "The sky above The Dale",
+      "credits": "Ceran   The Dale",
+      "minimumlevel": 1,
+      "maximumlevel": 51,
+      "minimumvnum": 13500,
+      "maximumvnum": 13699
+    },
+    "The Green Tower": {
+      "position": {
+        "x": 1750.451718226202,
+        "y": 236.25378353309407
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Ceran   Green Tinged tower",
+      "minimumlevel": 35,
+      "maximumlevel": 51,
+      "minimumvnum": 23260,
+      "maximumvnum": 23281
+    },
+    "The Hobo Train Yard": {
+      "position": {
+        "x": 1455.3674543011512,
+        "y": 1263.3241658731158
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Merthairu The Hobo Train Yard",
+      "minimumlevel": 40,
+      "maximumlevel": 51,
+      "minimumvnum": 17600,
+      "maximumvnum": 17680
+    },
+    "The Dragon Tower": {
+      "position": {
+        "x": 43.471604633647985,
+        "y": 1102.7047225057004
+      },
+      "size": 38.41726618705036,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Barsak  The Dragon Tower",
+      "minimumlevel": 35,
+      "maximumlevel": 51,
+      "minimumvnum": 11400,
+      "maximumvnum": 11599
+    },
+    "The North Road": {
+      "position": {
+        "x": 1169.7946826903758,
+        "y": 759.3249983447572
+      },
+      "size": 35.40983606557377,
+      "overroomvnum": 101010,
+      "overroomname": "The air above the Northern Crossroads.",
+      "credits": "",
+      "minimumlevel": 0,
+      "maximumlevel": 1,
+      "minimumvnum": 40700,
+      "maximumvnum": 40899
+    },
+    "The Red Tower": {
+      "position": {
+        "x": 1932.810575342051,
+        "y": 180.9495391481637
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Ceran   Red Tinged tower",
+      "minimumlevel": 35,
+      "maximumlevel": 51,
+      "minimumvnum": 23200,
+      "maximumvnum": 23225
+    },
+    "The Naiadian Sea": {
+      "position": {
+        "x": 604.2218130493497,
+        "y": 1114.439602159639
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Kyrissaean The Naiadian Sea",
+      "minimumlevel": 20,
+      "maximumlevel": 40,
+      "minimumvnum": 17800,
+      "maximumvnum": 17899
+    },
+    "The Obsidian Order": {
+      "position": {
+        "x": 2786.5686858205786,
+        "y": 1122.0691411734979
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Barsak  The Obsidian Order",
+      "minimumlevel": 25,
+      "maximumlevel": 51,
+      "minimumvnum": 18000,
+      "maximumvnum": 18099
+    },
+    "The Western Plains": {
+      "position": {
+        "x": 825.1991397539682,
+        "y": 521.120350194733
+      },
+      "size": 30,
+      "overroomvnum": 101018,
+      "overroomname": "The sky above The Western Plains",
+      "credits": "",
+      "minimumlevel": 0,
+      "maximumlevel": 1,
+      "minimumvnum": 51200,
+      "maximumvnum": 51399
+    },
+    "The Valley Inn": {
+      "position": {
+        "x": 1303.9645630505352,
+        "y": 819.2807124299993
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Merthairu The Valley Inn",
+      "minimumlevel": 1,
+      "maximumlevel": 51,
+      "minimumvnum": 12100,
+      "maximumvnum": 12135
+    },
+    "Troll Den": {
+      "position": {
+        "x": 1154.7538669406017,
+        "y": 1323.3172799581198
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Merc    Troll Den",
+      "minimumlevel": 10,
+      "maximumlevel": 15,
+      "minimumvnum": 2800,
+      "maximumvnum": 2899
+    },
+    "The Elven Stronghold": {
+      "position": {
+        "x": 1954.4226415070862,
+        "y": 520.7173369510224
+      },
+      "size": 44.375,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Deomanix The Elven Stronghold",
+      "minimumlevel": 20,
+      "maximumlevel": 51,
+      "minimumvnum": 4200,
+      "maximumvnum": 4399
+    },
+    "The Southern Swamps": {
+      "position": {
+        "x": 2856.3815587551944,
+        "y": 842.8628881452642
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Lichen   Southern Swamps",
+      "minimumlevel": 30,
+      "maximumlevel": 51,
+      "minimumvnum": 1500,
+      "maximumvnum": 1599
+    },
+    "The Dragon Sea": {
+      "position": {
+        "x": 2459.156569772135,
+        "y": 983.4013015270916
+      },
+      "size": 53.90243902439025,
+      "overroomvnum": 101041,
+      "overroomname": "The sky above the Minotaur Maze",
+      "credits": "",
+      "minimumlevel": 0,
+      "maximumlevel": 1,
+      "minimumvnum": 100000,
+      "maximumvnum": 100999
+    },
+    "The Minotaur Maze": {
+      "position": {
+        "x": 2241.129283213269,
+        "y": 1080.8997928636672
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Kyrissaean The Minotaur Maze",
+      "minimumlevel": 25,
+      "maximumlevel": 50,
+      "minimumvnum": 17900,
+      "maximumvnum": 17999
+    },
+    "Tigris River": {
+      "position": {
+        "x": 1291.0428853155777,
+        "y": 1059.1856188555612
+      },
+      "size": 30,
+      "overroomvnum": 101014,
+      "overroomname": "The air above The Tigris River",
+      "credits": "",
+      "minimumlevel": 0,
+      "maximumlevel": 1,
+      "minimumvnum": 60300,
+      "maximumvnum": 60599
+    },
+    "Urtazi": {
+      "position": {
+        "x": 868.1761590816741,
+        "y": 128.66779254136873
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Aino  Ur'Tazi",
+      "minimumlevel": 45,
+      "maximumlevel": 51,
+      "minimumvnum": 13300,
+      "maximumvnum": 13399
+    },
+    "Valley of the Elves": {
+      "position": {
+        "x": 944.3364554405525,
+        "y": 371.9581168013451
+      },
+      "size": 30,
+      "overroomvnum": 101019,
+      "overroomname": "The sky above the Valley of the Elves",
+      "credits": "Hatchet Valley of the Elves",
+      "minimumlevel": 5,
+      "maximumlevel": 20,
+      "minimumvnum": 7800,
+      "maximumvnum": 7899
+    },
+    "Wyvern's Tower": {
+      "position": {
+        "x": 1927.4058846705461,
+        "y": 1136.047338589884
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Tyrst   Wyvern's Tower",
+      "minimumlevel": 5,
+      "maximumlevel": 30,
+      "minimumvnum": 1600,
+      "maximumvnum": 1799
+    },
+    "The Veil": {
+      "position": {
+        "x": 3589.015554303756,
+        "y": 123.66650049605005
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Athillus       The Veil",
+      "minimumlevel": 1,
+      "maximumlevel": 51,
+      "minimumvnum": -23036,
+      "maximumvnum": -22837
+    },
+    "Vestibule of the Kings": {
+      "position": {
+        "x": 3439.248132928399,
+        "y": 592.0860601447439
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Kylos          Vestibule",
+      "minimumlevel": 1,
+      "maximumlevel": 51,
+      "minimumvnum": 30000,
+      "maximumvnum": 30199
+    },
+    "Varggin Shih": {
+      "position": {
+        "x": 3199.4344717599215,
+        "y": 918.8413693360567
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Barsak  Varggin Shih",
+      "minimumlevel": 40,
+      "maximumlevel": 51,
+      "minimumvnum": 22000,
+      "maximumvnum": 22099
+    },
+    "strange carnival.are": {
+      "position": {
+        "x": 2044.4970441596397,
+        "y": 869.3092260845433
+      },
+      "size": 30,
+      "overroomvnum": 101034,
+      "overroomname": "The sky above the Strange Carnival",
+      "credits": "Ceran   Strange Carnival",
+      "minimumlevel": 25,
+      "maximumlevel": 51,
+      "minimumvnum": 24400,
+      "maximumvnum": 24499
+    },
+    "The Pit of Despair": {
+      "position": {
+        "x": 2115.4378531019956,
+        "y": 811.1817331952298
+      },
+      "size": 30,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Lichen  The Pit of Despair",
+      "minimumlevel": 40,
+      "maximumlevel": 51,
+      "minimumvnum": 28100,
+      "maximumvnum": 28199
+    },
+    "Western Shatar Road": {
+      "position": {
+        "x": 1039.2277208636574,
+        "y": 760.7540368821542
+      },
+      "size": 30,
+      "overroomvnum": 101010,
+      "overroomname": "The air above the Northern Crossroads.",
+      "credits": "",
+      "minimumlevel": 0,
+      "maximumlevel": 1,
+      "minimumvnum": 50100,
+      "maximumvnum": 50199
+    },
+    "UnderDark": {
+      "position": {
+        "x": 461.04047562705773,
+        "y": 413.2149594048992
+      },
+      "size": 53.987975951903806,
+      "overroomvnum": 0,
+      "overroomname": null,
+      "credits": "Someone UnderDark",
+      "minimumlevel": 13,
+      "maximumlevel": 50,
+      "minimumvnum": 17000,
+      "maximumvnum": 17499
+    }
+  },
+  "connections": [
+    {
+      "sourceName": "Castle of Trials",
+      "targetName": "Shire",
+      "direction": "east",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Beholder Corps",
+      "targetName": "Visham",
+      "direction": "south",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Arachnos",
+      "targetName": "Haon Dor",
+      "direction": "south",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Visham",
+      "targetName": "Beholder Corps",
+      "direction": "north",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Visham",
+      "targetName": "The North Road",
+      "direction": "south",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Arkham Swamps",
+      "targetName": "Arkham",
+      "direction": "west",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Arkham Swamps",
+      "targetName": "Varggin Shih",
+      "direction": "north",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Arkham Swamps",
+      "targetName": "Arkham legion",
+      "direction": "east",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Castle of Giants",
+      "targetName": "Eastern Road",
+      "direction": "south",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Avalon",
+      "targetName": "The Dragon Sea",
+      "direction": "north",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Avalon",
+      "targetName": "The Dale",
+      "direction": "west",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Avalon",
+      "targetName": "Giant Village",
+      "direction": "east",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Avalon",
+      "targetName": "Midgaard",
+      "direction": "south",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Avalon",
+      "targetName": "Moria",
+      "direction": "north",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Blight",
+      "targetName": "Valley of the Elves",
+      "direction": "east",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Blight",
+      "targetName": "Urtazi",
+      "direction": "north",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Astoria",
+      "targetName": "Outskirts of Astoria",
+      "direction": "east",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Astoria",
+      "targetName": "Sewers",
+      "direction": "down",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Astoria",
+      "targetName": "mud school",
+      "direction": "up",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Astoria",
+      "targetName": "The Docks",
+      "direction": "south",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Astoria",
+      "targetName": "Haon Dor",
+      "direction": "west",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Arkham",
+      "targetName": "Arkham Swamps",
+      "direction": "east",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Arkham",
+      "targetName": "The Dragon Sea",
+      "direction": "west",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Arkham",
+      "targetName": "The Southern Swamps",
+      "direction": "south",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Arkham",
+      "targetName": "The Obsidian Order",
+      "direction": "north",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Arkham legion",
+      "targetName": "Arkham Swamps",
+      "direction": "west",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Catacombs",
+      "targetName": "Dwarven Kingdom",
+      "direction": "up",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Celestial Area",
+      "targetName": "New Ofcol",
+      "direction": "west",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Chapel",
+      "targetName": "Graveyard",
+      "direction": "north",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Ciquala's Lair",
+      "targetName": "Drow City",
+      "direction": "up",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Cliffs of Kylos",
+      "targetName": "The North Road",
+      "direction": "south",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Dark Forest",
+      "targetName": "Dargaard Keep",
+      "direction": "north",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Dark Forest",
+      "targetName": "Rivenrock Canyon",
+      "direction": "south",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Crusader Battlefield",
+      "targetName": "Valley of the Elves",
+      "direction": "east",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Dargaard Keep",
+      "targetName": "Dark Forest",
+      "direction": "south",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Dargaard Keep",
+      "targetName": "Hell",
+      "direction": "down",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Dead Forest",
+      "targetName": "Eastern Shatar Road",
+      "direction": "north",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Dead Forest",
+      "targetName": "Tarvalon",
+      "direction": "east",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Dead Forest",
+      "targetName": "Dying Forest.are",
+      "direction": "south",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Drow City",
+      "targetName": "Thalos",
+      "direction": "up",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Drow City",
+      "targetName": "Ciquala's Lair",
+      "direction": "down",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Dwarven Kingdom",
+      "targetName": "Catacombs",
+      "direction": "down",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Dwarven Kingdom",
+      "targetName": "Ramadahn",
+      "direction": "west",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Destroyer's Hall",
+      "targetName": "Vestibule of the Kings",
+      "direction": "south",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Drow Enclaves",
+      "targetName": "Troll Den",
+      "direction": "up",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Dylan's Area",
+      "targetName": "Midgaard",
+      "direction": "north",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Dying Forest.are",
+      "targetName": "Dead Forest",
+      "direction": "north",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Dying Forest.are",
+      "targetName": "The Valley Inn",
+      "direction": "south",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Dying Forest.are",
+      "targetName": "Outskirts of Astoria",
+      "direction": "west",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Eastern Road",
+      "targetName": "Shadowlands",
+      "direction": "down",
+      "useRect": true,
+      "rectPos": {
+        "x": 1805.3163835840742,
+        "y": 930.9567111050887
+      }
+    },
+    {
+      "sourceName": "Eastern Road",
+      "targetName": "Outskirts of Astoria",
+      "direction": "west",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Eastern Road",
+      "targetName": "The Valley Inn",
+      "direction": "north",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Eastern Road",
+      "targetName": "Tigris River",
+      "direction": "north",
+      "useRect": true,
+      "rectPos": {
+        "x": 1445.3087510458788,
+        "y": 1013.2184420943029
+      }
+    },
+    {
+      "sourceName": "Eastern Road",
+      "targetName": "UnderDark",
+      "direction": "south",
+      "useRect": true,
+      "rectPos": {
+        "x": 1680.4410334101613,
+        "y": 1048.8316481240695
+      }
+    },
+    {
+      "sourceName": "Eastern Road",
+      "targetName": "Tarvalon",
+      "direction": "north",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Eastern Road",
+      "targetName": "Castle of Giants",
+      "direction": "north",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Eastern Road",
+      "targetName": "Rivenrock Canyon",
+      "direction": "north",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Eastern Road",
+      "targetName": "New Thalos",
+      "direction": "east",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Eastern Road",
+      "targetName": "Thalos",
+      "direction": "south",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Eastern Shatar Road",
+      "targetName": "The North Road",
+      "direction": "west",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Eastern Shatar Road",
+      "targetName": "Dead Forest",
+      "direction": "south",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Eastern Shatar Road",
+      "targetName": "Nirvana",
+      "direction": "north",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Eastern Shatar Road",
+      "targetName": "Tarvalon",
+      "direction": "south",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Eastern Shatar Road",
+      "targetName": "Summer Road",
+      "direction": "north",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Elemental Temple",
+      "targetName": "High Tower",
+      "direction": "east",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Forest Road",
+      "targetName": "Haon Dor",
+      "direction": "north",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Forest Road",
+      "targetName": "Ruined Keep",
+      "direction": "south",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Forest Road",
+      "targetName": "The Naiadian Sea",
+      "direction": "south",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Goblin Village",
+      "targetName": "Miden'nir",
+      "direction": "west",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Goblin Village",
+      "targetName": "UnderDark",
+      "direction": "east",
+      "useRect": true,
+      "rectPos": {
+        "x": 1343.851091498234,
+        "y": 1300.9030197349327
+      }
+    },
+    {
+      "sourceName": "Galaxy",
+      "targetName": "High Tower",
+      "direction": "west",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Graveyard",
+      "targetName": "Midgaard",
+      "direction": "north",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Graveyard",
+      "targetName": "Chapel",
+      "direction": "south",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Forest of Myth Drannor",
+      "targetName": "Ruins of Drannor",
+      "direction": "west",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Forest of Myth Drannor",
+      "targetName": "New Thalos",
+      "direction": "west",
+      "useRect": true,
+      "rectPos": {
+        "x": 2085.7698551538183,
+        "y": 488.3942363023709
+      }
+    },
+    {
+      "sourceName": "Gangland",
+      "targetName": "The North Road",
+      "direction": "west",
+      "useRect": true,
+      "rectPos": {
+        "x": 896.4739558262609,
+        "y": 457.1603964865242
+      }
+    },
+    {
+      "sourceName": "Evil's Abode",
+      "targetName": "The Dragon Sea",
+      "direction": "south",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Emerald Forest",
+      "targetName": "Miden'nir",
+      "direction": "east",
+      "useRect": false,
+      "rectPos": {
+        "x": 1467.9266462442545,
+        "y": 1049.0487304445332
+      }
+    },
+    {
+      "sourceName": "Emerald Forest",
+      "targetName": "Midgaard",
+      "direction": "south",
+      "useRect": true,
+      "rectPos": {
+        "x": 1006.4261783846741,
+        "y": 1166.6151646047833
+      }
+    },
+    {
+      "sourceName": "Emerald Forest",
+      "targetName": "Goblin Village",
+      "direction": "down",
+      "useRect": true,
+      "rectPos": {
+        "x": 1009.1274858968779,
+        "y": 1300.1200993838058
+      }
+    },
+    {
+      "sourceName": "Giant Village",
+      "targetName": "The Southern Swamps",
+      "direction": "north",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Giant Village",
+      "targetName": "Avalon",
+      "direction": "west",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Lich Tower",
+      "targetName": "New Thalos",
+      "direction": "east",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Haon Dor",
+      "targetName": "Outskirts of Astoria",
+      "direction": "east",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Haon Dor",
+      "targetName": "Forest Road",
+      "direction": "south",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Haon Dor",
+      "targetName": "Arachnos",
+      "direction": "north",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Haon Dor",
+      "targetName": "High Tower",
+      "direction": "north",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Haon Dor",
+      "targetName": "Kobold Warren",
+      "direction": "north",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Haon Dor",
+      "targetName": "Astoria",
+      "direction": "east",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Kobold Warren",
+      "targetName": "Haon Dor",
+      "direction": "south",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Machine Dreams",
+      "targetName": "Midgaard",
+      "direction": "down",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Hell",
+      "targetName": "Dargaard Keep",
+      "direction": "up",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Marsh",
+      "targetName": "Western Shatar Road",
+      "direction": "north",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Mausoleum",
+      "targetName": "The Dragon Sea",
+      "direction": "north",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Miden'nir",
+      "targetName": "Outskirts of Astoria",
+      "direction": "north",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Miden'nir",
+      "targetName": "Emerald Forest",
+      "direction": "west",
+      "useRect": false,
+      "rectPos": {
+        "x": 1497.9266462442545,
+        "y": 1079.0487304445332
+      }
+    },
+    {
+      "sourceName": "Miden'nir",
+      "targetName": "Troll Den",
+      "direction": "south",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Miden'nir",
+      "targetName": "Tigris River",
+      "direction": "north",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Miden'nir",
+      "targetName": "Goblin Village",
+      "direction": "east",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "High Tower",
+      "targetName": "Haon Dor",
+      "direction": "south",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "High Tower",
+      "targetName": "Elemental Temple",
+      "direction": "west",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "High Tower",
+      "targetName": "The Dragon Tower",
+      "direction": "north",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "High Tower",
+      "targetName": "Galaxy",
+      "direction": "east",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Mad Man",
+      "targetName": "New Thalos",
+      "direction": "south",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "mud school",
+      "targetName": "Astoria",
+      "direction": "down",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Mahn-Tor",
+      "targetName": "Thalos",
+      "direction": "north",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Moria",
+      "targetName": "Midgaard",
+      "direction": "east",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Moria",
+      "targetName": "Avalon",
+      "direction": "south",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Naiadia",
+      "targetName": "The Naiadian Sea",
+      "direction": "north",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Naiadia",
+      "targetName": "Neraka",
+      "direction": "east",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "New Ofcol",
+      "targetName": "Ofcol",
+      "direction": "west",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "New Ofcol",
+      "targetName": "UnderDark",
+      "direction": "down",
+      "useRect": true,
+      "rectPos": {
+        "x": 1147.805023106103,
+        "y": 319.4330885841655
+      }
+    },
+    {
+      "sourceName": "New Ofcol",
+      "targetName": "The Obsidian Order",
+      "direction": "up",
+      "useRect": true,
+      "rectPos": {
+        "x": 1354.1114527618993,
+        "y": 262.48738223875785
+      }
+    },
+    {
+      "sourceName": "Nirvana",
+      "targetName": "Eastern Shatar Road",
+      "direction": "south",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Neraka",
+      "targetName": "Naiadia",
+      "direction": "west",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Midgaard",
+      "targetName": "Machine Dreams",
+      "direction": "up",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Midgaard",
+      "targetName": "Moria",
+      "direction": "west",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Midgaard",
+      "targetName": "Graveyard",
+      "direction": "south",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Midgaard",
+      "targetName": "Dylan's Area",
+      "direction": "south",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Midgaard",
+      "targetName": "Avalon",
+      "direction": "north",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Ofcol",
+      "targetName": "The North Road",
+      "direction": "south",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Ofcol",
+      "targetName": "New Ofcol",
+      "direction": "east",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "New Thalos",
+      "targetName": "Eastern Road",
+      "direction": "west",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "New Thalos",
+      "targetName": "Shadowlands",
+      "direction": "south",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "New Thalos",
+      "targetName": "The Dragon Sea",
+      "direction": "east",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "New Thalos",
+      "targetName": "strange carnival.are",
+      "direction": "east",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "New Thalos",
+      "targetName": "Lich Tower",
+      "direction": "west",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "New Thalos",
+      "targetName": "Forest of Myth Drannor",
+      "direction": "east",
+      "useRect": true,
+      "rectPos": {
+        "x": 1928.4927109365221,
+        "y": 878.9694374029589
+      }
+    },
+    {
+      "sourceName": "New Thalos",
+      "targetName": "Mad Man",
+      "direction": "north",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Quifael's",
+      "targetName": "Midgaard",
+      "direction": "west",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Plains",
+      "targetName": "The North Road",
+      "direction": "south",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Plains",
+      "targetName": "The Western Plains",
+      "direction": "south",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Plains",
+      "targetName": "Valley of the Elves",
+      "direction": "north",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Rakshasa Tower",
+      "targetName": "Ruins of Drannor",
+      "direction": "south",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Outskirts of Astoria",
+      "targetName": "Eastern Road",
+      "direction": "east",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Outskirts of Astoria",
+      "targetName": "Astoria",
+      "direction": "west",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Outskirts of Astoria",
+      "targetName": "Dying Forest.are",
+      "direction": "east",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Outskirts of Astoria",
+      "targetName": "The North Road",
+      "direction": "north",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Outskirts of Astoria",
+      "targetName": "Haon Dor",
+      "direction": "west",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Outskirts of Astoria",
+      "targetName": "Miden'nir",
+      "direction": "south",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Outskirts of Astoria",
+      "targetName": "The Docks",
+      "direction": "west",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Outskirts of Astoria",
+      "targetName": "Tigris River",
+      "direction": "east",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Rivenrock Canyon",
+      "targetName": "Eastern Road",
+      "direction": "south",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Rivenrock Canyon",
+      "targetName": "Dark Forest",
+      "direction": "north",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Pyramid",
+      "targetName": "Sands of Sorrow",
+      "direction": "west",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Ruined Keep",
+      "targetName": "Forest Road",
+      "direction": "north",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Sands of Sorrow",
+      "targetName": "Thalos",
+      "direction": "west",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Sands of Sorrow",
+      "targetName": "Pyramid",
+      "direction": "east",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Ruins of Drannor",
+      "targetName": "Forest of Myth Drannor",
+      "direction": "south",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Ruins of Drannor",
+      "targetName": "The Blue Tower",
+      "direction": "east",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Ruins of Drannor",
+      "targetName": "The Green Tower",
+      "direction": "north",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Ruins of Drannor",
+      "targetName": "The Red Tower",
+      "direction": "west",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Ruins of Drannor",
+      "targetName": "Rakshasa Tower",
+      "direction": "north",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Ramadahn",
+      "targetName": "Dwarven Kingdom",
+      "direction": "east",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Ramadahn",
+      "targetName": "Tarvalon",
+      "direction": "west",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Summer Road",
+      "targetName": "Tarvalon",
+      "direction": "west",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Summer Road",
+      "targetName": "Eastern Shatar Road",
+      "direction": "south",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Sewers",
+      "targetName": "Astoria",
+      "direction": "up",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Shire",
+      "targetName": "Western Shatar Road",
+      "direction": "south",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Shire",
+      "targetName": "Castle of Trials",
+      "direction": "west",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Shire",
+      "targetName": "Sywilm Woods",
+      "direction": "east",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "The Blue Tower",
+      "targetName": "Ruins of Drannor",
+      "direction": "west",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Shadowlands",
+      "targetName": "New Thalos",
+      "direction": "north",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Shadowlands",
+      "targetName": "Eastern Road",
+      "direction": "up",
+      "useRect": true,
+      "rectPos": {
+        "x": 2438.1260759668867,
+        "y": 720.3369601285262
+      }
+    },
+    {
+      "sourceName": "Shadowlands",
+      "targetName": "The Dale",
+      "direction": "east",
+      "useRect": false,
+      "rectPos": {
+        "x": 2490.080724143131,
+        "y": 1103.5614275813004
+      }
+    },
+    {
+      "sourceName": "Thalos",
+      "targetName": "UnderDark",
+      "direction": "west",
+      "useRect": true,
+      "rectPos": {
+        "x": 1846.019904996254,
+        "y": 1128.2995309661726
+      }
+    },
+    {
+      "sourceName": "Thalos",
+      "targetName": "Eastern Road",
+      "direction": "north",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Thalos",
+      "targetName": "Wyvern's Tower",
+      "direction": "east",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Thalos",
+      "targetName": "Drow City",
+      "direction": "down",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Thalos",
+      "targetName": "Sands of Sorrow",
+      "direction": "east",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Thalos",
+      "targetName": "Mahn-Tor",
+      "direction": "south",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Sywilm Woods",
+      "targetName": "Western Shatar Road",
+      "direction": "east",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Sywilm Woods",
+      "targetName": "Shire",
+      "direction": "west",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Sky Peoples City",
+      "targetName": "The North Road",
+      "direction": "down",
+      "useRect": true,
+      "rectPos": {
+        "x": 1475.3202378196788,
+        "y": 164.14043977494612
+      }
+    },
+    {
+      "sourceName": "Tarvalon",
+      "targetName": "mud school",
+      "direction": "down",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Tarvalon",
+      "targetName": "Tigris River",
+      "direction": "south",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Tarvalon",
+      "targetName": "Summer Road",
+      "direction": "west",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Tarvalon",
+      "targetName": "Ramadahn",
+      "direction": "east",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Tarvalon",
+      "targetName": "Eastern Shatar Road",
+      "direction": "west",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Tarvalon",
+      "targetName": "Plains",
+      "direction": "west",
+      "useRect": true,
+      "rectPos": {
+        "x": 1548.360998007447,
+        "y": 642.2885376777504
+      }
+    },
+    {
+      "sourceName": "Tarvalon",
+      "targetName": "Eastern Road",
+      "direction": "south",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Tarvalon",
+      "targetName": "Dead Forest",
+      "direction": "south",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Tarvalon",
+      "targetName": "The North Road",
+      "direction": "west",
+      "useRect": true,
+      "rectPos": {
+        "x": 1471.5501422553875,
+        "y": 734.4409604709231
+      }
+    },
+    {
+      "sourceName": "The Docks",
+      "targetName": "Astoria",
+      "direction": "north",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "The Docks",
+      "targetName": "Outskirts of Astoria",
+      "direction": "east",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "The Dale",
+      "targetName": "Avalon",
+      "direction": "east",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "The Dale",
+      "targetName": "Shadowlands",
+      "direction": "west",
+      "useRect": false,
+      "rectPos": {
+        "x": 2694.249669455631,
+        "y": 1180.3290057063004
+      }
+    },
+    {
+      "sourceName": "The Green Tower",
+      "targetName": "Ruins of Drannor",
+      "direction": "south",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "The Hobo Train Yard",
+      "targetName": "Dark Forest",
+      "direction": "west",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "The Dragon Tower",
+      "targetName": "High Tower",
+      "direction": "west",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "The North Road",
+      "targetName": "Plains",
+      "direction": "west",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "The North Road",
+      "targetName": "Outskirts of Astoria",
+      "direction": "south",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "The North Road",
+      "targetName": "Eastern Shatar Road",
+      "direction": "east",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "The North Road",
+      "targetName": "Western Shatar Road",
+      "direction": "west",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "The North Road",
+      "targetName": "The Western Plains",
+      "direction": "west",
+      "useRect": true,
+      "rectPos": {
+        "x": 1037.3845149819376,
+        "y": 677.1646603537295
+      }
+    },
+    {
+      "sourceName": "The North Road",
+      "targetName": "Gangland",
+      "direction": "east",
+      "useRect": true,
+      "rectPos": {
+        "x": 1071.2097956700109,
+        "y": 602.1822775900398
+      }
+    },
+    {
+      "sourceName": "The North Road",
+      "targetName": "Tarvalon",
+      "direction": "east",
+      "useRect": true,
+      "rectPos": {
+        "x": 1247.267793622575,
+        "y": 700.2906919162356
+      }
+    },
+    {
+      "sourceName": "The North Road",
+      "targetName": "Cliffs of Kylos",
+      "direction": "north",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "The North Road",
+      "targetName": "Sky Peoples City",
+      "direction": "up",
+      "useRect": true,
+      "rectPos": {
+        "x": 1388.6107737005523,
+        "y": 551.290891090021
+      }
+    },
+    {
+      "sourceName": "The North Road",
+      "targetName": "Ofcol",
+      "direction": "north",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "The North Road",
+      "targetName": "Visham",
+      "direction": "north",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "The Red Tower",
+      "targetName": "Ruins of Drannor",
+      "direction": "east",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "The Naiadian Sea",
+      "targetName": "Naiadia",
+      "direction": "east",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "The Naiadian Sea",
+      "targetName": "Forest Road",
+      "direction": "north",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "The Obsidian Order",
+      "targetName": "Arkham",
+      "direction": "south",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "The Obsidian Order",
+      "targetName": "New Ofcol",
+      "direction": "west",
+      "useRect": true,
+      "rectPos": {
+        "x": 2755.389773074399,
+        "y": 1192.1618817504766
+      }
+    },
+    {
+      "sourceName": "The Obsidian Order",
+      "targetName": "Castle of Giants",
+      "direction": "down",
+      "useRect": true,
+      "rectPos": {
+        "x": 2892.18174612659,
+        "y": 1097.6528755525317
+      }
+    },
+    {
+      "sourceName": "The Western Plains",
+      "targetName": "Plains",
+      "direction": "north",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "The Western Plains",
+      "targetName": "The North Road",
+      "direction": "east",
+      "useRect": true,
+      "rectPos": {
+        "x": 925.3844539467814,
+        "y": 556.0140866232607
+      }
+    },
+    {
+      "sourceName": "The Western Plains",
+      "targetName": "Western Shatar Road",
+      "direction": "west",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "The Valley Inn",
+      "targetName": "Eastern Road",
+      "direction": "south",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "The Valley Inn",
+      "targetName": "Dying Forest.are",
+      "direction": "north",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Troll Den",
+      "targetName": "Drow Enclaves",
+      "direction": "down",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Troll Den",
+      "targetName": "Miden'nir",
+      "direction": "north",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "The Elven Stronghold",
+      "targetName": "Forest of Myth Drannor",
+      "direction": "south",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "The Elven Stronghold",
+      "targetName": "Ruins of Drannor",
+      "direction": "west",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "The Southern Swamps",
+      "targetName": "Arkham",
+      "direction": "north",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "The Southern Swamps",
+      "targetName": "Giant Village",
+      "direction": "south",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "The Dragon Sea",
+      "targetName": "New Thalos",
+      "direction": "west",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "The Dragon Sea",
+      "targetName": "Arkham",
+      "direction": "east",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "The Dragon Sea",
+      "targetName": "Avalon",
+      "direction": "south",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "The Dragon Sea",
+      "targetName": "Mausoleum",
+      "direction": "south",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "The Dragon Sea",
+      "targetName": "Evil's Abode",
+      "direction": "north",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "The Dragon Sea",
+      "targetName": "The Minotaur Maze",
+      "direction": "north",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "The Minotaur Maze",
+      "targetName": "The Dragon Sea",
+      "direction": "south",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Tigris River",
+      "targetName": "Tarvalon",
+      "direction": "north",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Tigris River",
+      "targetName": "Eastern Road",
+      "direction": "south",
+      "useRect": true,
+      "rectPos": {
+        "x": 1320.0550889365038,
+        "y": 1139.0881930708654
+      }
+    },
+    {
+      "sourceName": "Tigris River",
+      "targetName": "Outskirts of Astoria",
+      "direction": "west",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Tigris River",
+      "targetName": "Miden'nir",
+      "direction": "south",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Urtazi",
+      "targetName": "Blight",
+      "direction": "south",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Valley of the Elves",
+      "targetName": "Plains",
+      "direction": "south",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Valley of the Elves",
+      "targetName": "Crusader Battlefield",
+      "direction": "west",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Valley of the Elves",
+      "targetName": "Blight",
+      "direction": "west",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Wyvern's Tower",
+      "targetName": "Thalos",
+      "direction": "west",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Vestibule of the Kings",
+      "targetName": "Destroyer's Hall",
+      "direction": "north",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Varggin Shih",
+      "targetName": "Arkham Swamps",
+      "direction": "south",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "strange carnival.are",
+      "targetName": "The Pit of Despair",
+      "direction": "down",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "strange carnival.are",
+      "targetName": "New Thalos",
+      "direction": "west",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "The Pit of Despair",
+      "targetName": "strange carnival.are",
+      "direction": "up",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Western Shatar Road",
+      "targetName": "The Western Plains",
+      "direction": "north",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Western Shatar Road",
+      "targetName": "The North Road",
+      "direction": "east",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Western Shatar Road",
+      "targetName": "Marsh",
+      "direction": "south",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Western Shatar Road",
+      "targetName": "Shire",
+      "direction": "north",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "Western Shatar Road",
+      "targetName": "Sywilm Woods",
+      "direction": "west",
+      "useRect": false,
+      "rectPos": null
+    },
+    {
+      "sourceName": "UnderDark",
+      "targetName": "Goblin Village",
+      "direction": "west",
+      "useRect": true,
+      "rectPos": {
+        "x": 542.6706038975553,
+        "y": 493.5345462471985
+      }
+    },
+    {
+      "sourceName": "UnderDark",
+      "targetName": "Thalos",
+      "direction": "east",
+      "useRect": true,
+      "rectPos": {
+        "x": 386.076463643863,
+        "y": 495.5873059581361
+      }
+    },
+    {
+      "sourceName": "UnderDark",
+      "targetName": "Eastern Road",
+      "direction": "north",
+      "useRect": true,
+      "rectPos": {
+        "x": 340.83110245010766,
+        "y": 360.36846714732155
+      }
+    }
+  ]
+}
